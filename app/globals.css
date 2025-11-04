@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design tokens from Design.json */
+:root {
+  --color-primary: #6C2CF1;
+  --color-secondary: #00B2FF;
+  --color-accent: #FF7A00;
+  --color-background: #0D0D12;
+  --color-surface: #FFFFFF;
+  --color-grid-line: rgba(255, 255, 255, 0.1);
+  --text-primary: #FFFFFF;
+  --text-secondary: #B3B3C0;
+
+  --radius-card: 16px;
+  --radius-button: 12px;
+  --shadow-elev: 0px 8px 24px rgba(0, 0, 0, 0.15);
+  --container-padding: 24px;
+  --grid-spacing: 24px;
+
+  /* Typography scale */
+  --font-heading-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-body-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --heading-xxl: 96px;
+  --heading-xl: 64px;
+  --heading-lg: 32px;
+  --body-size: 16px;
+
+  /* Motion */
+  --ease-standard: ease-in-out;
+  --transition-fast: 0.25s;
+}
+
+/* Background: gradient + subtle grid + faint particles */
+html, body { height: 100%; }
+body {
+  color: var(--text-primary);
+  background-color: var(--color-background);
+  background-image:
+    /* particles */ radial-gradient(1200px 600px at 80% 10%, color-mix(in oklab, var(--color-primary) 40%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 10% 20%, color-mix(in oklab, var(--color-secondary) 35%, transparent), transparent 60%),
+    /* main gradient */ linear-gradient(to bottom, color-mix(in oklab, var(--color-primary) 35%, transparent), color-mix(in oklab, var(--color-secondary) 35%, transparent));
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  background-position:
+    0 0,
+    0 0,
+    0 0;
+  background-attachment: fixed;
+  min-height: 100svh;
+}
+
+/* Typography utilities tied to tokens */
+.heading-xxl { font-family: var(--font-heading-family); font-weight: 800; font-size: clamp(48px, 8vw, var(--heading-xxl)); line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; }
+.heading-xl  { font-family: var(--font-heading-family); font-weight: 800; font-size: clamp(36px, 6vw, var(--heading-xl)); line-height: 1.1; letter-spacing: 0.02em; text-transform: uppercase; }
+.heading-lg  { font-family: var(--font-heading-family); font-weight: 800; font-size: var(--heading-lg); line-height: 1.2; letter-spacing: 0.02em; text-transform: uppercase; }
+.body-text   { font-family: var(--font-body-family); font-weight: 400; font-size: var(--body-size); line-height: 1.75; }
+.text-secondary { color: var(--text-secondary); }
+
+/* Color utilities (no arbitrary hex beyond tokens) */
+.text-primary   { color: var(--color-primary); }
+.text-accent    { color: var(--color-accent); }
+.bg-surface     { background-color: color-mix(in oklab, var(--color-surface) 8%, transparent); }
+.border-accent  { border-color: var(--color-secondary); }
+
+/* Motion utilities following design system */
+.hover-glow {
+  transition: transform var(--transition-fast) var(--ease-standard), box-shadow var(--transition-fast) var(--ease-standard), background-color var(--transition-fast) var(--ease-standard), border-color var(--transition-fast) var(--ease-standard);
+}
+.hover-glow:hover {
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 45%, transparent), 0 10px 28px color-mix(in oklab, var(--color-primary) 30%, transparent);
+}
+
+/* Container width and spacing */
+.container-max { max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: var(--container-padding); padding-right: var(--container-padding); }
+.section-y { padding-top: calc(var(--grid-spacing) * 4); padding-bottom: calc(var(--grid-spacing) * 4); }
+@media (min-width: 768px) {
+  .section-y { padding-top: calc(var(--grid-spacing) * 6); padding-bottom: calc(var(--grid-spacing) * 6); }
+}
+
+/* Button tokens */
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; border-radius: var(--radius-button); padding: 12px 24px; font-weight: 600; transition: transform var(--transition-fast) var(--ease-standard), box-shadow var(--transition-fast) var(--ease-standard), background-color var(--transition-fast) var(--ease-standard), color var(--transition-fast) var(--ease-standard), border-color var(--transition-fast) var(--ease-standard); text-transform: uppercase; letter-spacing: 0.04em; border: 1px solid color-mix(in oklab, var(--color-surface) 12%, transparent); }
+.btn-primary { background: var(--color-primary); color: var(--text-primary); border-color: color-mix(in oklab, var(--color-primary) 60%, transparent); }
+.btn-primary:hover { transform: translateY(-1px) scale(1.03); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 55%, transparent), 0 14px 36px color-mix(in oklab, var(--color-primary) 35%, transparent); }
+.btn-secondary { background: var(--color-secondary); color: var(--text-primary); border-color: color-mix(in oklab, var(--color-secondary) 60%, transparent); }
+.btn-secondary:hover { transform: translateY(-1px) scale(1.03); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-secondary) 55%, transparent), 0 14px 36px color-mix(in oklab, var(--color-secondary) 35%, transparent); }
+
+/* A11y focus ring aligned with tokens */
+:focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 2px; }
+
+/* Glass card common base (used by Card component too) */
+.glass {
+  background: color-mix(in oklab, var(--color-surface) 8%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-surface) 14%, transparent);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-elev);
+  backdrop-filter: saturate(140%) blur(8px);
+}
+
+/* Logo: enlarge and visually remove white PNG backgrounds on dark BG */
+.logo-img {
+  width: 56px; height: 56px;
+  border-radius: 12px;
+  object-fit: contain;
+  /* On dark backgrounds this hides white backgrounds nicely */
+  mix-blend-mode: multiply;
+  /* Soft edge + glow */
+  filter: drop-shadow(0 4px 18px color-mix(in oklab, var(--color-primary) 35%, transparent));
+}
+
+
