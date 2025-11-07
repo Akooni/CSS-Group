@@ -1,5 +1,6 @@
 "use client";
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Code2, Sparkles, GraduationCap, Cpu, BarChart3, Shield, Database, Layers } from 'lucide-react';
 import { Section } from '../components/ui/Section';
@@ -174,13 +175,70 @@ export default function Page() {
 
       {/* Footer */}
       <footer className="section-y border-t" style={{ borderColor: 'var(--color-grid-line)' }}>
-        <div className="container-max text-center text-secondary text-sm">
-          <nav className="flex items-center justify-center gap-6 mb-3">
-            <Link href="#about" className="hover-glow">{t('nav.about')}</Link>
-            <Link href="#activities" className="hover-glow">{t('nav.activities')}</Link>
-            <Link href="#majors" className="hover-glow">{t('nav.majors')}</Link>
-          </nav>
-          <p>© {new Date().getFullYear()} Computer Science Society. {t('footer.rights')}</p>
+        <div className="container-max">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            {/* Column 1: About + Logo */}
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <Image
+                  src="/logo.png"
+                  alt="Computer Science Society logo"
+                  width={48}
+                  height={48}
+                  className="footer-logo"
+                />
+                <span className="text-primary font-bold text-lg">CSS Society</span>
+              </div>
+              <p className="body-text text-secondary text-sm max-w-xs leading-relaxed">
+                {t('footer.about')}
+              </p>
+            </div>
+
+            {/* Column 2: Quick Links */}
+            <div className="flex flex-col gap-4">
+              <h3 className="heading-lg text-sm mb-2">{t('footer.quickLinks')}</h3>
+              <nav className="flex flex-col gap-3">
+                <Link href="#about" className="text-secondary hover:text-primary text-sm transition-colors proximity-hover">
+                  {t('nav.about')}
+                </Link>
+                <Link href="#activities" className="text-secondary hover:text-primary text-sm transition-colors proximity-hover">
+                  {t('footer.events')}
+                </Link>
+                <Link href="#activities" className="text-secondary hover:text-primary text-sm transition-colors proximity-hover">
+                  {t('footer.projects')}
+                </Link>
+                <Link href="#join" className="text-secondary hover:text-primary text-sm transition-colors proximity-hover">
+                  {t('nav.join')}
+                </Link>
+                <Link href="#majors" className="text-secondary hover:text-primary text-sm transition-colors proximity-hover">
+                  {t('nav.majors')}
+                </Link>
+              </nav>
+            </div>
+
+            {/* Column 3: Follow Us */}
+            <div className="flex flex-col gap-4">
+              <h3 className="heading-lg text-sm mb-2">{t('footer.followUs')}</h3>
+              <div className="flex items-center gap-4">
+                <a
+                  href="https://www.instagram.com/css.du/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-secondary hover:text-primary transition-colors proximity-hover"
+                  aria-label="Instagram"
+                >
+                  <i className="fa-brands fa-instagram text-2xl"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="pt-6 border-t text-center" style={{ borderColor: 'var(--color-grid-line)' }}>
+            <p className="text-secondary text-sm">
+              © {new Date().getFullYear()} Computer Science Society. {t('footer.rights')}
+            </p>
+          </div>
         </div>
       </footer>
     </>

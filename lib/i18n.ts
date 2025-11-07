@@ -35,7 +35,14 @@ const resources = {
         cySkills: { s1: 'Networks & OS', s2: 'Threat Modeling', s3: 'Cryptography Basics', s4: 'SecOps & Hardening' }
       },
       join: { title: 'Ready to Join?', subtitle: 'Be part of a community that learns and builds together.' },
-      footer: { rights: 'Built with care by students.' }
+      footer: {
+        about: 'The Computer Science Society is a student-led community at Dhofar University dedicated to practical learning, building projects, and preparing for tech careers.',
+        quickLinks: 'Quick Links',
+        followUs: 'Follow Us',
+        events: 'Events',
+        projects: 'Projects',
+        rights: 'Built with care by students.'
+      }
     }
   },
   ar: {
@@ -70,7 +77,14 @@ const resources = {
         cySkills: { s1: 'الشبكات ونظم التشغيل', s2: 'نمذجة التهديدات', s3: 'أساسيات التشفير', s4: 'الأمن التشغيلي والتقسية' }
       },
       join: { title: 'جاهز للانضمام؟', subtitle: 'كن جزءًا من مجتمع يتعلم ويبني معًا.' },
-      footer: { rights: 'بُني بحب على أيدي الطلاب.' }
+      footer: {
+        about: 'جمعية علوم الحاسوب مجتمع طلابي في جامعة ظفار مكرّس للتعلم العملي وبناء المشاريع والاستعداد للمسارات المهنية في التقنية.',
+        quickLinks: 'روابط سريعة',
+        followUs: 'تابعنا',
+        events: 'الفعاليات',
+        projects: 'المشاريع',
+        rights: 'بُني بحب على أيدي الطلاب.'
+      }
     }
   }
 } as const;

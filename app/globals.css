@@ -112,4 +112,78 @@ body {
   filter: drop-shadow(0 4px 18px color-mix(in oklab, var(--color-primary) 35%, transparent));
 }
 
+/* Footer logo - no blend mode, normal colors */
+.footer-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: contain;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+/* Footer improvements */
+footer {
+  background: color-mix(in oklab, var(--color-background) 95%, transparent);
+}
+
+footer a {
+  transition: color var(--transition-fast) var(--ease-standard);
+  /* Remove any box/border on hover */
+  outline: none;
+  box-shadow: none;
+}
+
+footer a:hover {
+  /* Only color change, no box */
+  color: var(--color-primary) !important;
+  transform: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+footer .fa-brands {
+  transition: transform var(--transition-fast) var(--ease-standard), color var(--transition-fast) var(--ease-standard);
+}
+
+footer .fa-brands:hover {
+  transform: scale(1.15);
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Proximity hover effect - floating when mouse gets near */
+.proximity-hover {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.proximity-hover:hover {
+  transform: translateY(-4px);
+}
+
+/* Special hover for social icons */
+footer .proximity-hover:hover {
+  transform: translateY(-8px) scale(1.1);
+}
+
+/* Apply proximity hover to cards and buttons */
+.card, .glass, .btn {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.card:hover, .glass:hover {
+  transform: translateY(-6px);
+}
+
+/* Card title improvements */
+.heading-lg {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Arabic font override when RTL */
+html[dir="rtl"] body { font-family: var(--font-arabic), var(--font-body-family); }
+html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .heading-lg { font-family: var(--font-arabic), var(--font-heading-family); }
+
 

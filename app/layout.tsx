@@ -2,13 +2,18 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Press_Start_2P } from 'next/font/google';
+import { Press_Start_2P, Montserrat, Poppins, Inter, Tajawal } from 'next/font/google';
 import { DirectionProvider } from '../components/providers/DirectionProvider';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
+import { FontAwesomeLoader } from '../components/FontAwesomeLoader';
 import dynamic from 'next/dynamic';
 const NavLinks = dynamic(() => import('../components/NavLinks').then(m => m.NavLinks), { ssr: false });
 
 const pixel = Press_Start_2P({ weight: '400', subsets: ['latin'] });
+const montserrat = Montserrat({ subsets: ['latin'] });
+const poppins = Poppins({ weight: ['600','700','800'], subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] });
+const tajawal = Tajawal({ weight: ['400','500','700'], subsets: ['arabic'], variable: '--font-arabic' });
 
 export const metadata: Metadata = {
   title: 'Computer Science Society (CSS)',
@@ -18,7 +23,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen antialiased">
+      <body className={`min-h-screen antialiased ${inter.className} ${tajawal.variable}`}>
         {/* Sticky top navigation */}
         <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30 border-b border-white/10">
           <nav className="container-max flex items-center justify-between h-16">
@@ -36,10 +41,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </span>
             </Link>
             <NavLinks />
-            <div className="md:hidden text-sm text-secondary">Menu</div>
+            <button className="md:hidden text-secondary hover:text-primary transition-colors" aria-label="Menu">
+              <i className="fa-solid fa-bars text-2xl"></i>
+            </button>
           </nav>
         </header>
 
+        <FontAwesomeLoader />
         <DirectionProvider>
           <main>{children}</main>
         </DirectionProvider>
