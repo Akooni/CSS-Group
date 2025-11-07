@@ -97,9 +97,10 @@ export default function Page() {
           <p className="body-text text-secondary">{t('whatIs.p1')}</p>
           <div className="flex justify-center items-center">
             <img 
-              src="https://via.placeholder.com/400x300" 
-              alt="Computer Science Society" 
-              className="rounded-lg w-full max-w-md"
+              src="/pixel-art-scene.png?v=1" 
+              alt="Computer Science Society community scene" 
+              className="rounded-lg w-full max-w-md shadow-lg"
+              style={{ maxWidth: '100%', height: 'auto' }}
             />
           </div>
         </div>
