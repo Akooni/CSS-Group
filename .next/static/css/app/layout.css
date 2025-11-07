@@ -505,6 +505,12 @@ video {
 .fixed {
   position: fixed;
 }
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
 .sticky {
   position: sticky;
 }
@@ -516,6 +522,9 @@ video {
 }
 .top-0 {
   top: 0px;
+}
+.top-full {
+  top: 100%;
 }
 .z-50 {
   z-index: 50;
@@ -535,6 +544,9 @@ video {
 .mb-8 {
   margin-bottom: 2rem;
 }
+.mt-2 {
+  margin-top: 0.5rem;
+}
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -552,6 +564,9 @@ video {
 }
 .min-h-screen {
   min-height: 100vh;
+}
+.w-56 {
+  width: 14rem;
 }
 .max-w-2xl {
   max-width: 42rem;
@@ -580,8 +595,14 @@ video {
 .items-center {
   align-items: center;
 }
+.justify-center {
+  justify-content: center;
+}
 .justify-between {
   justify-content: space-between;
+}
+.gap-1 {
+  gap: 0.25rem;
 }
 .gap-10 {
   gap: 2.5rem;
@@ -601,6 +622,9 @@ video {
 .gap-8 {
   gap: 2rem;
 }
+.rounded-lg {
+  border-radius: 0.5rem;
+}
 .border-b {
   border-bottom-width: 1px;
 }
@@ -609,6 +633,9 @@ video {
 }
 .border-white\/10 {
   border-color: rgb(255 255 255 / 0.1);
+}
+.p-2 {
+  padding: 0.5rem;
 }
 .p-6 {
   padding: 1.5rem;
@@ -621,9 +648,17 @@ video {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .pb-24 {
   padding-bottom: 6rem;
@@ -881,26 +916,66 @@ footer .proximity-hover:hover {
 /* Arabic font override when RTL */
 html[dir="rtl"] body { font-family: var(--font-arabic), var(--font-body-family); }
 html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .heading-lg { font-family: var(--font-arabic), var(--font-heading-family); }
+
+/* Dropdown menu animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glass[class*="absolute"] {
+  animation: slideDown 0.2s ease-out;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Dropdown menu with gradient background */
+.dropdown-menu {
+  background: linear-gradient(135deg, 
+    color-mix(in oklab, var(--color-primary) 90%, transparent) 0%,
+    color-mix(in oklab, var(--color-secondary) 85%, transparent) 100%);
+  border: 1px solid color-mix(in oklab, var(--color-surface) 20%, transparent);
+  border-radius: var(--radius-card);
+  box-shadow: 0 8px 32px rgba(108, 44, 241, 0.3), 0 0 0 1px color-mix(in oklab, var(--color-primary) 30%, transparent);
+  backdrop-filter: saturate(140%) blur(12px);
+  animation: slideDown 0.2s ease-out;
+}
+
+.dropdown-menu nav a {
+  border-radius: 8px;
+}
+
+.dropdown-menu nav a:hover {
+  background: color-mix(in oklab, var(--color-surface) 15%, transparent);
+}
+
+.hover\:bg-white\/5:hover {
+  background-color: rgb(255 255 255 / 0.05);
+}
+
 @supports (backdrop-filter: var(--tw)) {
 
   .supports-\[backdrop-filter\]\:bg-black\/30 {
     background-color: rgb(0 0 0 / 0.3);
   }
 }
+
 @media (min-width: 640px) {
 
   .sm\:flex-row {
     flex-direction: row;
   }
 }
+
 @media (min-width: 768px) {
 
   .md\:flex {
     display: flex;
-  }
-
-  .md\:hidden {
-    display: none;
   }
 
   .md\:grid-cols-2 {

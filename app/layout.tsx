@@ -7,7 +7,7 @@ import { DirectionProvider } from '../components/providers/DirectionProvider';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { FontAwesomeLoader } from '../components/FontAwesomeLoader';
 import dynamic from 'next/dynamic';
-const NavLinks = dynamic(() => import('../components/NavLinks').then(m => m.NavLinks), { ssr: false });
+const NavDropdown = dynamic(() => import('../components/NavDropdown').then(m => m.NavDropdown), { ssr: false });
 
 const pixel = Press_Start_2P({ weight: '400', subsets: ['latin'] });
 const montserrat = Montserrat({ subsets: ['latin'] });
@@ -40,10 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <span className="text-primary">COMPUTER SCIENCE</span> <span className="text-secondary">SOCIETY</span>
               </span>
             </Link>
-            <NavLinks />
-            <button className="md:hidden text-secondary hover:text-primary transition-colors" aria-label="Menu">
-              <i className="fa-solid fa-bars text-2xl"></i>
-            </button>
+            <NavDropdown />
           </nav>
         </header>
 

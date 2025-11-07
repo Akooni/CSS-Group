@@ -186,4 +186,41 @@ footer .proximity-hover:hover {
 html[dir="rtl"] body { font-family: var(--font-arabic), var(--font-body-family); }
 html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .heading-lg { font-family: var(--font-arabic), var(--font-heading-family); }
 
+/* Dropdown menu animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glass[class*="absolute"] {
+  animation: slideDown 0.2s ease-out;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Dropdown menu with gradient background */
+.dropdown-menu {
+  background: linear-gradient(135deg, 
+    color-mix(in oklab, var(--color-primary) 90%, transparent) 0%,
+    color-mix(in oklab, var(--color-secondary) 85%, transparent) 100%);
+  border: 1px solid color-mix(in oklab, var(--color-surface) 20%, transparent);
+  border-radius: var(--radius-card);
+  box-shadow: 0 8px 32px rgba(108, 44, 241, 0.3), 0 0 0 1px color-mix(in oklab, var(--color-primary) 30%, transparent);
+  backdrop-filter: saturate(140%) blur(12px);
+  animation: slideDown 0.2s ease-out;
+}
+
+.dropdown-menu nav a {
+  border-radius: 8px;
+}
+
+.dropdown-menu nav a:hover {
+  background: color-mix(in oklab, var(--color-surface) 15%, transparent);
+}
+
 
