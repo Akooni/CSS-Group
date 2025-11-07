@@ -183,9 +183,10 @@ export function NavDropdown() {
                 rel="noopener noreferrer"
                 onClick={handleLinkClick}
                 className={cn(
-                  'mt-6 btn btn-primary',
+                  'mt-6 mobile-join-btn',
                   'flex items-center justify-center gap-2',
-                  'text-base font-bold w-full py-4'
+                  'text-base font-bold w-full py-4 rounded-lg',
+                  'transition-all hover:scale-105'
                 )}
               >
                 <Sparkles size={20} />

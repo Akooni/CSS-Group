@@ -329,4 +329,31 @@ html[dir="rtl"] .dropdown-menu-mobile nav a {
               0 8px 24px color-mix(in oklab, var(--color-primary) 40%, transparent);
 }
 
+/* Mobile dropdown join button - bright and contrasting */
+.mobile-join-btn {
+  background: linear-gradient(135deg, #FFFFFF 0%, #F0F0F0 100%);
+  color: var(--color-primary);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 16px rgba(255, 255, 255, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mobile-join-btn:hover {
+  background: linear-gradient(135deg, #FFFFFF 0%, #E8E8E8 100%);
+  box-shadow: 
+    0 6px 20px rgba(255, 255, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.mobile-join-btn:active {
+  transform: translateY(0) scale(1);
+}
+
 
