@@ -246,18 +246,76 @@ html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .head
   animation: slideDown 0.2s ease-out;
 }
 
-/* Fullscreen on mobile */
+/* Slide-in drawer for mobile */
 .dropdown-menu-mobile {
   border-radius: 0;
   border: none;
   background: linear-gradient(135deg, 
-    color-mix(in oklab, var(--color-primary) 95%, transparent) 0%,
-    color-mix(in oklab, var(--color-secondary) 90%, transparent) 100%);
+    color-mix(in oklab, var(--color-primary) 98%, transparent) 0%,
+    color-mix(in oklab, var(--color-secondary) 95%, transparent) 100%);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5);
+  -webkit-overflow-scrolling: touch;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Slide-in animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.dropdown-slide {
+  animation: slideInRight 0.3s ease-out;
+  will-change: transform;
+}
+
+html[dir="rtl"] .dropdown-slide {
+  animation: slideInLeft 0.3s ease-out;
+  will-change: transform;
+}
+
+/* Ensure mobile menu content is visible */
+.dropdown-menu-mobile nav {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem;
+}
+
+.dropdown-menu-mobile nav a {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .dropdown-menu nav a {
   border-radius: 8px;
   text-align: center;
+}
+
+/* Mobile menu links */
+.dropdown-menu-mobile nav a {
+  text-align: left;
+  font-size: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+html[dir="rtl"] .dropdown-menu-mobile nav a {
+  text-align: right;
 }
 
 .dropdown-menu nav a:hover {

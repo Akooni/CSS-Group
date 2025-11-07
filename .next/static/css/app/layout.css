@@ -517,6 +517,9 @@ video {
 .inset-0 {
   inset: 0px;
 }
+.bottom-0 {
+  bottom: 0px;
+}
 .bottom-4 {
   bottom: 1rem;
 }
@@ -535,11 +538,14 @@ video {
 .top-full {
   top: 100%;
 }
-.z-40 {
-  z-index: 40;
-}
 .z-50 {
   z-index: 50;
+}
+.z-\[100\] {
+  z-index: 100;
+}
+.z-\[101\] {
+  z-index: 101;
 }
 .mb-10 {
   margin-bottom: 2.5rem;
@@ -568,6 +574,9 @@ video {
 .mt-4 {
   margin-top: 1rem;
 }
+.mt-6 {
+  margin-top: 1.5rem;
+}
 .flex {
   display: flex;
 }
@@ -586,11 +595,17 @@ video {
 .w-56 {
   width: 14rem;
 }
+.w-80 {
+  width: 20rem;
+}
 .w-full {
   width: 100%;
 }
 .max-w-2xl {
   max-width: 42rem;
+}
+.max-w-\[85vw\] {
+  max-width: 85vw;
 }
 .max-w-md {
   max-width: 28rem;
@@ -600,6 +615,9 @@ video {
 }
 .max-w-xs {
   max-width: 20rem;
+}
+.flex-1 {
+  flex: 1 1 0%;
 }
 .grow {
   flex-grow: 1;
@@ -618,6 +636,9 @@ video {
 }
 .items-center {
   align-items: center;
+}
+.justify-end {
+  justify-content: flex-end;
 }
 .justify-center {
   justify-content: center;
@@ -643,6 +664,9 @@ video {
 .gap-8 {
   gap: 2rem;
 }
+.overflow-y-auto {
+  overflow-y: auto;
+}
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -655,11 +679,14 @@ video {
 .border-white\/10 {
   border-color: rgb(255 255 255 / 0.1);
 }
-.bg-black\/50 {
-  background-color: rgb(0 0 0 / 0.5);
+.bg-black\/60 {
+  background-color: rgb(0 0 0 / 0.6);
 }
 .p-2 {
   padding: 0.5rem;
+}
+.p-4 {
+  padding: 1rem;
 }
 .p-6 {
   padding: 1.5rem;
@@ -676,6 +703,10 @@ video {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -683,6 +714,10 @@ video {
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .pb-24 {
   padding-bottom: 6rem;
@@ -1014,18 +1049,76 @@ html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .head
   animation: slideDown 0.2s ease-out;
 }
 
-/* Fullscreen on mobile */
+/* Slide-in drawer for mobile */
 .dropdown-menu-mobile {
   border-radius: 0;
   border: none;
   background: linear-gradient(135deg, 
-    color-mix(in oklab, var(--color-primary) 95%, transparent) 0%,
-    color-mix(in oklab, var(--color-secondary) 90%, transparent) 100%);
+    color-mix(in oklab, var(--color-primary) 98%, transparent) 0%,
+    color-mix(in oklab, var(--color-secondary) 95%, transparent) 100%);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5);
+  -webkit-overflow-scrolling: touch;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Slide-in animation */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.dropdown-slide {
+  animation: slideInRight 0.3s ease-out;
+  will-change: transform;
+}
+
+html[dir="rtl"] .dropdown-slide {
+  animation: slideInLeft 0.3s ease-out;
+  will-change: transform;
+}
+
+/* Ensure mobile menu content is visible */
+.dropdown-menu-mobile nav {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.75rem;
+}
+
+.dropdown-menu-mobile nav a {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .dropdown-menu nav a {
   border-radius: 8px;
   text-align: center;
+}
+
+/* Mobile menu links */
+.dropdown-menu-mobile nav a {
+  text-align: left;
+  font-size: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+html[dir="rtl"] .dropdown-menu-mobile nav a {
+  text-align: right;
 }
 
 .dropdown-menu nav a:hover {

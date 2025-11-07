@@ -16,11 +16,18 @@ export function NavDropdown() {
   // Detect mobile viewport
   React.useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      const isMobileView = window.innerWidth < 768;
+      setIsMobile(isMobileView);
     };
+    // Check immediately
     checkMobile();
+    // Also check after a short delay to ensure window is available
+    const timeoutId = setTimeout(checkMobile, 100);
     window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   // Prevent body scroll when menu is open on mobile
@@ -35,8 +42,10 @@ export function NavDropdown() {
     };
   }, [isOpen, isMobile]);
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside (desktop only)
   React.useEffect(() => {
+    if (isMobile) return; // Don't handle click outside on mobile, overlay handles it
+    
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
@@ -50,7 +59,7 @@ export function NavDropdown() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen]);
+  }, [isOpen, isMobile]);
 
   // Close dropdown when a link is clicked
   const handleLinkClick = () => {
@@ -81,34 +90,85 @@ export function NavDropdown() {
         <i className={cn('fa-solid text-2xl', isOpen ? 'fa-xmark' : 'fa-bars')}></i>
       </button>
 
-      {isOpen && (
-        <>
-          {/* Mobile overlay */}
-          {isMobile && (
-            <div 
-              className="fixed inset-0 bg-black/50 z-40"
-              onClick={() => setIsOpen(false)}
-            />
+      {/* Desktop dropdown */}
+      {isOpen && !isMobile && (
+        <div 
+          className={cn(
+            'absolute top-full mt-2 w-56 p-2 z-50 dropdown-menu',
+            dir === 'rtl' ? 'left-0' : 'right-0'
           )}
+        >
+          <nav className="flex flex-col gap-2">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={handleLinkClick}
+                className={cn(
+                  'text-sm uppercase tracking-wide text-white',
+                  'hover:text-primary hover:bg-white/10',
+                  'px-4 py-3 rounded-lg transition-all',
+                  'proximity-hover'
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="https://docs.google.com/forms/d/e/1FAIpQLSffQ9x9CS9Vnk3DR0gTfZcsNzBQAAvFCVaWfKm1EqzKIf5Wrw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={handleLinkClick}
+              className={cn(
+                'mt-4 btn btn-primary',
+                'flex items-center justify-center gap-2',
+                'text-base font-bold'
+              )}
+            >
+              <Sparkles size={20} />
+              {t('cta.join')}
+            </Link>
+          </nav>
+        </div>
+      )}
+
+      {/* Mobile slide-in drawer */}
+      {isOpen && isMobile && (
+        <>
+          {/* Overlay */}
+          <div 
+            className="fixed inset-0 bg-black/60 z-[100]"
+            onClick={() => setIsOpen(false)}
+          />
+          {/* Drawer */}
           <div 
             className={cn(
-              'p-2 z-50 dropdown-menu',
-              isMobile 
-                ? 'fixed inset-0 flex flex-col justify-center items-center dropdown-menu-mobile' 
-                : 'absolute top-full mt-2 w-56',
-              !isMobile && (dir === 'rtl' ? 'left-0' : 'right-0')
+              'fixed top-0 bottom-0 w-80 max-w-[85vw] flex flex-col dropdown-menu-mobile dropdown-slide z-[101]',
+              dir === 'rtl' ? 'left-0' : 'right-0'
             )}
           >
-            <nav className={cn('flex flex-col gap-2', isMobile && 'w-full max-w-md px-4')}>
+            {/* Header with close button */}
+            <div className="flex justify-end p-4 border-b border-white/10">
+              <button
+                onClick={() => setIsOpen(false)}
+                className="p-2 text-white hover:text-primary transition-colors"
+                aria-label="Close menu"
+              >
+                <i className="fa-solid fa-xmark text-2xl"></i>
+              </button>
+            </div>
+            
+            {/* Navigation content */}
+            <nav className="flex-1 overflow-y-auto px-6 py-4 flex flex-col gap-3">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={handleLinkClick}
                   className={cn(
-                    'text-sm uppercase tracking-wide text-white',
+                    'text-base uppercase tracking-wide text-white',
                     'hover:text-primary hover:bg-white/10',
-                    'px-4 py-3 rounded-lg transition-all',
+                    'px-4 py-4 rounded-lg transition-all',
                     'proximity-hover'
                   )}
                 >
@@ -123,10 +183,9 @@ export function NavDropdown() {
                 rel="noopener noreferrer"
                 onClick={handleLinkClick}
                 className={cn(
-                  'mt-4 btn btn-primary',
+                  'mt-6 btn btn-primary',
                   'flex items-center justify-center gap-2',
-                  'text-base font-bold',
-                  isMobile && 'w-full'
+                  'text-base font-bold w-full py-4'
                 )}
               >
                 <Sparkles size={20} />
