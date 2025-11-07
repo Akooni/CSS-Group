@@ -13,19 +13,25 @@ export default function Page() {
   return (
     <>
       {/* Hero */}
-      <Section
-        id="hero"
-        className="pt-20 pb-24"
-        title={t('hero.title')}
-        subtitle={t('hero.tagline')}
-      >
+      <section id="hero" className="section-y pt-20 pb-24 hero-bg">
+        <div className="container-max">
+          <div className="mb-10">
+            <h2 className="heading-xl">{t('hero.title')}</h2>
+            <p className="body-text text-secondary mt-3 max-w-2xl">{t('hero.tagline')}</p>
+          </div>
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
             <p className="body-text text-secondary mb-6 max-w-prose">
               {t('whatIs.p1')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="#join" className="btn btn-primary" aria-label={t('cta.join')}>
+              <Link 
+                href="https://docs.google.com/forms/d/e/1FAIpQLSffQ9x9CS9Vnk3DR0gTfZcsNzBQAAvFCVaWfKm1EqzKIf5Wrw/viewform" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary" 
+                aria-label={t('cta.join')}
+              >
                 <Sparkles size={18} /> {t('cta.join')}
               </Link>
               <Link href="#majors" className="btn btn-secondary" aria-label={t('cta.exploreMajors')}>
@@ -52,13 +58,15 @@ export default function Page() {
             </motion.div>
           </div>
         </div>
-      </Section>
+        </div>
+      </section>
 
       {/* About */}
       <Section id="about" title={t('about.title')} subtitle={t('about.subtitle')}>
         <div className="grid md:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
+              <i className="fa-solid fa-users text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
               <CardTitle>{t('about.cards.peerTitle')}</CardTitle>
               <CardDescription>{t('about.cards.peerDesc')}</CardDescription>
             </CardHeader>
@@ -66,6 +74,7 @@ export default function Page() {
           </Card>
           <Card>
             <CardHeader>
+              <i className="fa-solid fa-code text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
               <CardTitle>{t('about.cards.projectTitle')}</CardTitle>
               <CardDescription>{t('about.cards.projectDesc')}</CardDescription>
             </CardHeader>
@@ -73,6 +82,7 @@ export default function Page() {
           </Card>
           <Card>
             <CardHeader>
+              <i className="fa-solid fa-briefcase text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
               <CardTitle>{t('about.cards.careerTitle')}</CardTitle>
               <CardDescription>{t('about.cards.careerDesc')}</CardDescription>
             </CardHeader>
@@ -83,14 +93,15 @@ export default function Page() {
 
       {/* What is CSS Group */}
       <Section id="what-is" title={t('whatIs.title')} subtitle={t('whatIs.subtitle')}>
-        <div className="grid md:grid-cols-2 gap-8 items-start">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
           <p className="body-text text-secondary">{t('whatIs.p1')}</p>
-          <ul className="body-text text-secondary grid gap-3 list-disc pl-5">
-            <li>{t('whatIs.li1')}</li>
-            <li>{t('whatIs.li2')}</li>
-            <li>{t('whatIs.li3')}</li>
-            <li>{t('whatIs.li4')}</li>
-          </ul>
+          <div className="flex justify-center items-center">
+            <img 
+              src="https://via.placeholder.com/400x300" 
+              alt="Computer Science Society" 
+              className="rounded-lg w-full max-w-md"
+            />
+          </div>
         </div>
       </Section>
 
@@ -99,6 +110,7 @@ export default function Page() {
         <div className="grid md:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
+              <i className="fa-solid fa-chalkboard-user text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
               <CardTitle>{t('activities.w1.title')}</CardTitle>
               <CardDescription>{t('activities.w1.desc')}</CardDescription>
             </CardHeader>
@@ -106,6 +118,7 @@ export default function Page() {
           </Card>
           <Card>
             <CardHeader>
+              <i className="fa-solid fa-laptop-code text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
               <CardTitle>{t('activities.w2.title')}</CardTitle>
               <CardDescription>{t('activities.w2.desc')}</CardDescription>
             </CardHeader>
@@ -113,6 +126,7 @@ export default function Page() {
           </Card>
           <Card>
             <CardHeader>
+              <i className="fa-solid fa-trophy text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
               <CardTitle>{t('activities.w3.title')}</CardTitle>
               <CardDescription>{t('activities.w3.desc')}</CardDescription>
             </CardHeader>

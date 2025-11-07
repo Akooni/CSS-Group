@@ -92,6 +92,25 @@ body {
 /* A11y focus ring aligned with tokens */
 :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 2px; }
 
+/* Hero section with background image */
+.hero-bg {
+  position: relative;
+  background-image: 
+    /* Dark overlay for text readability */
+    linear-gradient(rgba(15, 15, 30, 0.8), rgba(15, 15, 30, 0.8)),
+    /* Background image */
+    url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hero-bg h2 {
+  position: relative;
+  z-index: 1;
+}
+
 /* Glass card common base (used by Card component too) */
 .glass {
   background: color-mix(in oklab, var(--color-surface) 8%, transparent);
@@ -99,6 +118,7 @@ body {
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-elev);
   backdrop-filter: saturate(140%) blur(8px);
+  padding: 1.5rem;
 }
 
 /* Logo: enlarge and visually remove white PNG backgrounds on dark BG */
@@ -182,6 +202,17 @@ footer .proximity-hover:hover {
   font-size: 1.25rem;
 }
 
+/* Card spacing improvements */
+.card, .glass {
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .card, .glass {
+    padding: 2rem;
+  }
+}
+
 /* Arabic font override when RTL */
 html[dir="rtl"] body { font-family: var(--font-arabic), var(--font-body-family); }
 html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .heading-lg { font-family: var(--font-arabic), var(--font-heading-family); }
@@ -206,21 +237,38 @@ html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .head
 /* Dropdown menu with gradient background */
 .dropdown-menu {
   background: linear-gradient(135deg, 
-    color-mix(in oklab, var(--color-primary) 90%, transparent) 0%,
-    color-mix(in oklab, var(--color-secondary) 85%, transparent) 100%);
-  border: 1px solid color-mix(in oklab, var(--color-surface) 20%, transparent);
+    color-mix(in oklab, var(--color-primary) 95%, transparent) 0%,
+    color-mix(in oklab, var(--color-secondary) 90%, transparent) 100%);
+  border: 1px solid color-mix(in oklab, var(--color-surface) 25%, transparent);
   border-radius: var(--radius-card);
-  box-shadow: 0 8px 32px rgba(108, 44, 241, 0.3), 0 0 0 1px color-mix(in oklab, var(--color-primary) 30%, transparent);
+  box-shadow: 0 8px 32px rgba(108, 44, 241, 0.4), 0 0 0 1px color-mix(in oklab, var(--color-primary) 40%, transparent);
   backdrop-filter: saturate(140%) blur(12px);
   animation: slideDown 0.2s ease-out;
 }
 
+/* Fullscreen on mobile */
+.dropdown-menu-mobile {
+  border-radius: 0;
+  border: none;
+  background: linear-gradient(135deg, 
+    color-mix(in oklab, var(--color-primary) 95%, transparent) 0%,
+    color-mix(in oklab, var(--color-secondary) 90%, transparent) 100%);
+}
+
 .dropdown-menu nav a {
   border-radius: 8px;
+  text-align: center;
 }
 
 .dropdown-menu nav a:hover {
-  background: color-mix(in oklab, var(--color-surface) 15%, transparent);
+  background: color-mix(in oklab, var(--color-surface) 20%, transparent);
+  transform: translateY(-2px);
+}
+
+/* Featured Join button in dropdown */
+.dropdown-menu .btn-primary {
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 60%, transparent), 
+              0 8px 24px color-mix(in oklab, var(--color-primary) 40%, transparent);
 }
 
 

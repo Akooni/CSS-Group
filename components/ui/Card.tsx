@@ -9,8 +9,7 @@ export function Card({ className, ...props }: CardProps) {
   return (
     <div
       className={cn(
-        'glass hover-glow',
-        'p-6 md:p-8',
+        'glass hover-glow card',
         className,
       )}
       {...props}

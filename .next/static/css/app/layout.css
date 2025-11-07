@@ -514,8 +514,17 @@ video {
 .sticky {
   position: sticky;
 }
+.inset-0 {
+  inset: 0px;
+}
 .bottom-4 {
   bottom: 1rem;
+}
+.left-0 {
+  left: 0px;
+}
+.right-0 {
+  right: 0px;
 }
 .right-4 {
   right: 1rem;
@@ -525,6 +534,9 @@ video {
 }
 .top-full {
   top: 100%;
+}
+.z-40 {
+  z-index: 40;
 }
 .z-50 {
   z-index: 50;
@@ -538,6 +550,9 @@ video {
 .mb-3 {
   margin-bottom: 0.75rem;
 }
+.mb-4 {
+  margin-bottom: 1rem;
+}
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -549,6 +564,9 @@ video {
 }
 .mt-3 {
   margin-top: 0.75rem;
+}
+.mt-4 {
+  margin-top: 1rem;
 }
 .flex {
   display: flex;
@@ -568,8 +586,14 @@ video {
 .w-56 {
   width: 14rem;
 }
+.w-full {
+  width: 100%;
+}
 .max-w-2xl {
   max-width: 42rem;
+}
+.max-w-md {
+  max-width: 28rem;
 }
 .max-w-prose {
   max-width: 65ch;
@@ -580,6 +604,9 @@ video {
 .grow {
   flex-grow: 1;
 }
+.resize {
+  resize: both;
+}
 .list-disc {
   list-style-type: disc;
 }
@@ -589,9 +616,6 @@ video {
 .flex-col {
   flex-direction: column;
 }
-.items-start {
-  align-items: flex-start;
-}
 .items-center {
   align-items: center;
 }
@@ -600,9 +624,6 @@ video {
 }
 .justify-between {
   justify-content: space-between;
-}
-.gap-1 {
-  gap: 0.25rem;
 }
 .gap-10 {
   gap: 2.5rem;
@@ -634,6 +655,9 @@ video {
 .border-white\/10 {
   border-color: rgb(255 255 255 / 0.1);
 }
+.bg-black\/50 {
+  background-color: rgb(0 0 0 / 0.5);
+}
 .p-2 {
   padding: 0.5rem;
 }
@@ -656,9 +680,9 @@ video {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 .pb-24 {
   padding-bottom: 6rem;
@@ -678,6 +702,10 @@ video {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 .text-lg {
   font-size: 1.125rem;
@@ -706,6 +734,10 @@ video {
 .tracking-wider {
   letter-spacing: 0.05em;
 }
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
 .antialiased {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -722,6 +754,11 @@ video {
 }
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-all {
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -821,6 +858,25 @@ body {
 /* A11y focus ring aligned with tokens */
 :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 2px; }
 
+/* Hero section with background image */
+.hero-bg {
+  position: relative;
+  background-image: 
+    /* Dark overlay for text readability */
+    linear-gradient(rgba(15, 15, 30, 0.8), rgba(15, 15, 30, 0.8)),
+    /* Background image */
+    url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hero-bg h2 {
+  position: relative;
+  z-index: 1;
+}
+
 /* Glass card common base (used by Card component too) */
 .glass {
   background: color-mix(in oklab, var(--color-surface) 8%, transparent);
@@ -828,6 +884,7 @@ body {
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-elev);
   backdrop-filter: saturate(140%) blur(8px);
+  padding: 1.5rem;
 }
 
 /* Logo: enlarge and visually remove white PNG backgrounds on dark BG */
@@ -913,6 +970,17 @@ footer .proximity-hover:hover {
   font-size: 1.25rem;
 }
 
+/* Card spacing improvements */
+.card, .glass {
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .card, .glass {
+    padding: 2rem;
+  }
+}
+
 /* Arabic font override when RTL */
 html[dir="rtl"] body { font-family: var(--font-arabic), var(--font-body-family); }
 html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .heading-lg { font-family: var(--font-arabic), var(--font-heading-family); }
@@ -937,41 +1005,54 @@ html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .head
 /* Dropdown menu with gradient background */
 .dropdown-menu {
   background: linear-gradient(135deg, 
-    color-mix(in oklab, var(--color-primary) 90%, transparent) 0%,
-    color-mix(in oklab, var(--color-secondary) 85%, transparent) 100%);
-  border: 1px solid color-mix(in oklab, var(--color-surface) 20%, transparent);
+    color-mix(in oklab, var(--color-primary) 95%, transparent) 0%,
+    color-mix(in oklab, var(--color-secondary) 90%, transparent) 100%);
+  border: 1px solid color-mix(in oklab, var(--color-surface) 25%, transparent);
   border-radius: var(--radius-card);
-  box-shadow: 0 8px 32px rgba(108, 44, 241, 0.3), 0 0 0 1px color-mix(in oklab, var(--color-primary) 30%, transparent);
+  box-shadow: 0 8px 32px rgba(108, 44, 241, 0.4), 0 0 0 1px color-mix(in oklab, var(--color-primary) 40%, transparent);
   backdrop-filter: saturate(140%) blur(12px);
   animation: slideDown 0.2s ease-out;
 }
 
+/* Fullscreen on mobile */
+.dropdown-menu-mobile {
+  border-radius: 0;
+  border: none;
+  background: linear-gradient(135deg, 
+    color-mix(in oklab, var(--color-primary) 95%, transparent) 0%,
+    color-mix(in oklab, var(--color-secondary) 90%, transparent) 100%);
+}
+
 .dropdown-menu nav a {
   border-radius: 8px;
+  text-align: center;
 }
 
 .dropdown-menu nav a:hover {
-  background: color-mix(in oklab, var(--color-surface) 15%, transparent);
+  background: color-mix(in oklab, var(--color-surface) 20%, transparent);
+  transform: translateY(-2px);
 }
 
-.hover\:bg-white\/5:hover {
-  background-color: rgb(255 255 255 / 0.05);
+/* Featured Join button in dropdown */
+.dropdown-menu .btn-primary {
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 60%, transparent), 
+              0 8px 24px color-mix(in oklab, var(--color-primary) 40%, transparent);
 }
-
+.hover\:bg-white\/10:hover {
+  background-color: rgb(255 255 255 / 0.1);
+}
 @supports (backdrop-filter: var(--tw)) {
 
   .supports-\[backdrop-filter\]\:bg-black\/30 {
     background-color: rgb(0 0 0 / 0.3);
   }
 }
-
 @media (min-width: 640px) {
 
   .sm\:flex-row {
     flex-direction: row;
   }
 }
-
 @media (min-width: 768px) {
 
   .md\:flex {
@@ -984,10 +1065,6 @@ html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .head
 
   .md\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .md\:p-8 {
-    padding: 2rem;
   }
 
   .md\:text-base {
