@@ -273,7 +273,13 @@ export default function Page() {
       {/* Join CTA */}
       <Section id="join" title={t('join.title')} subtitle={t('join.subtitle')}>
         <div className="flex flex-col sm:flex-row items-center gap-4">
-          <Link href="#" className="btn btn-primary" aria-label={t('cta.join')}>
+          <Link 
+            href="https://docs.google.com/forms/d/e/1FAIpQLSffQ9x9CS9Vnk3DR0gTfZcsNzBQAAvFCVaWfKm1EqzKIf5Wrw/viewform" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary" 
+            aria-label={t('cta.join')}
+          >
             <Sparkles size={18} /> {t('cta.join')}
           </Link>
           <Link href="#activities" className="btn btn-secondary" aria-label={t('cta.seeActivities')}>
