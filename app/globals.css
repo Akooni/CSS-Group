@@ -134,14 +134,14 @@ p {
   transform: translateY(-2px);
   box-shadow: 
     0px 6px 20px rgba(0, 0, 0, 0.3),
-    0px 3px 12px rgba(111, 153, 255, 0.2),
+    0px 3px 12px rgba(177, 140, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   background: rgba(9, 13, 33, 0.65);
-  border-color: rgba(111, 153, 255, 0.35);
+  border-color: rgba(177, 140, 255, 0.35);
   /* Soft glow effect on navigation links */
   text-shadow: 
-    0 0 8px rgba(106, 93, 247, 0.5),
-    0 0 12px rgba(79, 209, 255, 0.3),
+    0 0 8px rgba(177, 140, 255, 0.5),
+    0 0 12px rgba(197, 168, 255, 0.3),
     0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -212,12 +212,12 @@ p {
 /* A11y focus ring aligned with tokens */
 :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 2px; }
 
-/* Hero section with background image - refreshed with student-friendly colors */
+/* Hero section with background image - unified dark transparent overlay */
 .hero-bg {
   position: relative;
   background-image: 
-    /* Soft top overlay gradient for depth and welcoming feel */
-    linear-gradient(180deg, rgba(8, 11, 30, 1) 0%, rgba(8, 11, 30, 0.4) 45%, rgba(7, 18, 46, 0) 100%),
+    /* Subtle dark overlay - allows background image to show through */
+    linear-gradient(180deg, rgba(8, 11, 30, 0.6) 0%, rgba(8, 11, 30, 0.4) 50%, rgba(7, 18, 46, 0.3) 100%),
     /* Background image */
     url('/back3.png');
   background-size: cover;
@@ -225,6 +225,9 @@ p {
   background-repeat: no-repeat;
   background-attachment: fixed;
   overflow: hidden;
+  /* Ensure background image is visible */
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Thin colored accent line at top of hero for energy */
@@ -277,13 +280,21 @@ p {
 .hero-bg h1,
 .hero-bg h3 {
   position: relative;
-  z-index: 1;
-  color: #ecf2ff;
+  z-index: 3;
+  color: #ffffff;
   font-family: var(--font-heading-family);
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.3;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  /* Enhanced text shadow for better readability against background */
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.8),
+    0 4px 16px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(0, 0, 0, 0.4);
+  /* Crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   /* Fade-in animation on page load */
   animation: fadeInUp 0.8s ease-out;
   opacity: 0;
@@ -293,13 +304,21 @@ p {
 .hero-bg .body-text,
 .hero-bg p {
   position: relative;
-  z-index: 1;
-  color: #ecf2ff;
-  opacity: 0.95;
+  z-index: 3;
+  color: #ffffff;
+  opacity: 1;
   font-family: var(--font-body-family);
   font-weight: 400;
-  line-height: 1.6;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.7;
+  /* Enhanced text shadow for better readability against background */
+  text-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.7),
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 16px rgba(0, 0, 0, 0.3);
+  /* Crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   /* Fade-in animation with delay */
   animation: fadeInUp 0.8s ease-out 0.2s;
   opacity: 0;
@@ -307,37 +326,110 @@ p {
 }
 
 .hero-bg .text-secondary {
-  color: rgba(236, 242, 255, 0.85);
+  position: relative;
+  z-index: 3;
+  color: rgba(255, 255, 255, 0.95);
   font-family: var(--font-body-family);
+  /* Enhanced text shadow for better readability */
+  text-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.7),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+  /* Sharp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   /* Fade-in animation with delay */
   animation: fadeInUp 0.8s ease-out 0.3s;
   opacity: 0;
   animation-fill-mode: forwards;
 }
 
-/* Hero section container fade-in */
+/* Hero section container - no background, shows background image directly */
 .hero-bg .container-max > div:first-child {
+  position: relative;
+  z-index: 2;
+  /* No background - transparent */
+  background: transparent;
+  padding: 2.5rem 3rem;
+  margin-bottom: 2.5rem;
+  /* No border, no shadow */
+  border: none;
+  box-shadow: none;
+  /* Ensure text rendering is crisp */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  /* Fade-in animation */
   animation: fadeInUp 0.8s ease-out 0.1s;
   opacity: 0;
   animation-fill-mode: forwards;
 }
 
-/* Icon colors in hero cards */
+/* Description text - no background, shows background image directly */
+.hero-bg .grid > div:first-child > p.body-text.text-secondary {
+  position: relative;
+  display: block;
+  /* No background - transparent */
+  background: transparent;
+  padding: 1rem 0;
+  /* No border, no shadow */
+  border: none;
+  box-shadow: none;
+  /* Make text bright for readability */
+  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.7;
+  /* Enhanced text shadow for better readability against background image */
+  text-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* No hover effect needed */
+.hero-bg .grid > div:first-child > p.body-text.text-secondary:hover {
+  background: transparent;
+}
+
+/* Responsive padding for smaller screens */
+@media (max-width: 768px) {
+  .hero-bg .container-max > div:first-child {
+    padding: 2rem 2rem;
+    border-radius: 12px;
+  }
+  
+  /* Adjust description text padding on smaller screens */
+  .hero-bg .grid > div:first-child > p.body-text.text-secondary {
+    padding: 0.875rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-bg .container-max > div:first-child {
+    padding: 1.5rem 1.5rem;
+  }
+  
+  /* Adjust description text padding on mobile */
+  .hero-bg .grid > div:first-child > p.body-text.text-secondary {
+    padding: 0.75rem 0;
+  }
+}
+
+/* Icon colors in hero cards - light purple glow */
 .hero-bg .glass svg {
-  color: #6a5df7;
-  filter: drop-shadow(0 0 8px rgba(106, 93, 247, 0.4));
+  color: #b18cff;
+  filter: drop-shadow(0 0 8px rgba(177, 140, 255, 0.4));
   transition: all var(--transition-fast) var(--ease-standard);
 }
 
 .hero-bg .glass:hover svg {
-  color: #4fd1ff;
-  filter: drop-shadow(0 0 12px rgba(79, 209, 255, 0.5));
+  color: #c5a8ff;
+  filter: drop-shadow(0 0 12px rgba(197, 168, 255, 0.5));
 }
 
 /* Glass card common base - lightened for student-friendly, interactive feel */
 .glass {
   background: rgba(9, 13, 33, 0.55);
-  border: 1px solid rgba(111, 153, 255, 0.25);
+  border: 1px solid rgba(177, 140, 255, 0.25);
   border-radius: var(--radius-card);
   box-shadow: 
     0px 4px 16px rgba(0, 0, 0, 0.25),
@@ -352,10 +444,10 @@ p {
 /* Hero section cards - enhanced for welcoming feel */
 .hero-bg .glass {
   background: rgba(9, 13, 33, 0.6);
-  border: 1px solid rgba(111, 153, 255, 0.3);
+  border: 1px solid rgba(177, 140, 255, 0.3);
   box-shadow: 
     0px 6px 20px rgba(0, 0, 0, 0.3),
-    0px 3px 12px rgba(106, 93, 247, 0.15),
+    0px 3px 12px rgba(177, 140, 255, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
@@ -394,25 +486,22 @@ footer a {
 }
 
 footer a:hover {
-  /* Subtle color change with soft glow */
-  color: #5a54e0 !important;
+  /* Subtle color change with soft purple glow */
+  color: #b18cff !important;
   transform: none;
   box-shadow: none;
   background: transparent;
+  /* More purple, lessened glow */
   text-shadow: 
-    0 0 8px rgba(106, 93, 247, 0.4),
-    0 0 12px rgba(79, 209, 255, 0.3);
+    0 0 5px rgba(177, 140, 255, 0.4),
+    0 0 10px rgba(177, 140, 255, 0.25);
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 footer .fa-brands {
-  transition: transform var(--transition-fast) var(--ease-standard), color var(--transition-fast) var(--ease-standard);
-}
-
-footer .fa-brands:hover {
-  transform: scale(1.15);
-  box-shadow: none;
-  background: transparent;
+  transition: transform var(--transition-fast) var(--ease-standard), 
+              color var(--transition-fast) var(--ease-standard),
+              filter var(--transition-fast) var(--ease-standard);
 }
 
 /* Proximity hover effect - floating when mouse gets near with soft glow */
@@ -427,18 +516,43 @@ footer .fa-brands:hover {
 
 .proximity-hover:hover {
   transform: translateY(-4px);
-  /* Soft glow effect on hover */
+  /* Soft purple glow effect on hover - reduced intensity */
   text-shadow: 
-    0 0 8px rgba(106, 93, 247, 0.4),
-    0 0 16px rgba(79, 209, 255, 0.3);
+    0 0 6px rgba(177, 140, 255, 0.35),
+    0 0 12px rgba(177, 140, 255, 0.25);
 }
 
-/* Special hover for social icons */
-footer .proximity-hover:hover {
-  transform: translateY(-8px) scale(1.1);
+/* Footer Quick Links - no transform to prevent overflow, purple glow only */
+footer nav {
+  /* Ensure navigation container properly contains links */
+  position: relative;
+  overflow: visible;
+}
+
+footer nav .proximity-hover {
+  display: inline-block;
+  /* Ensure link stays within bounds */
+  position: relative;
+  /* Add padding to prevent clipping */
+  padding: 2px 0;
+  margin: -2px 0;
+}
+
+footer nav .proximity-hover:hover {
+  transform: none;
+  /* More purple glow, lessened intensity for Quick Links */
   text-shadow: 
-    0 0 12px rgba(106, 93, 247, 0.5),
-    0 0 24px rgba(79, 209, 255, 0.4);
+    0 0 5px rgba(177, 140, 255, 0.4),
+    0 0 10px rgba(177, 140, 255, 0.25);
+}
+
+/* Special hover for social icons in footer */
+footer .fa-brands:hover {
+  transform: scale(1.15);
+  box-shadow: none;
+  background: transparent;
+  /* Purple glow for social icons */
+  filter: drop-shadow(0 0 6px rgba(177, 140, 255, 0.4));
 }
 
 /* Apply proximity hover to cards and buttons */
@@ -450,19 +564,33 @@ footer .proximity-hover:hover {
   transform: translateY(-3px);
   box-shadow: 
     0px 8px 24px rgba(0, 0, 0, 0.35),
-    0px 4px 12px rgba(111, 153, 255, 0.2),
+    0px 4px 12px rgba(177, 140, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
   background: rgba(9, 13, 33, 0.65);
-  border-color: rgba(111, 153, 255, 0.4);
+  border-color: rgba(177, 140, 255, 0.4);
 }
 
 .hero-bg .glass:hover {
   background: rgba(9, 13, 33, 0.7);
-  border-color: rgba(111, 153, 255, 0.45);
+  border-color: rgba(177, 140, 255, 0.45);
   box-shadow: 
     0px 10px 28px rgba(0, 0, 0, 0.4),
-    0px 5px 16px rgba(106, 93, 247, 0.25),
+    0px 5px 16px rgba(177, 140, 255, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Section card icons - light purple glow for consistency */
+.card .fa-solid,
+.card i[class*="fa-"] {
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 6px rgba(177, 140, 255, 0.3));
+  transition: all var(--transition-fast) var(--ease-standard);
+}
+
+.card:hover .fa-solid,
+.card:hover i[class*="fa-"] {
+  color: #b18cff;
+  filter: drop-shadow(0 0 10px rgba(177, 140, 255, 0.5));
 }
 
 /* Card title improvements - English headings with Fira Code */
@@ -519,6 +647,17 @@ html[dir="rtl"] .hero-bg h1,
 html[dir="rtl"] .hero-bg h3 {
   font-family: var(--font-arabic), 'Tajawal', sans-serif;
   /* Override Fira Code for Arabic */
+  color: #ffffff;
+  z-index: 3;
+  /* Enhanced text shadow for better readability against background */
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.8),
+    0 4px 16px rgba(0, 0, 0, 0.6),
+    0 0 24px rgba(0, 0, 0, 0.4);
+  /* Crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html[dir="rtl"] .hero-bg .body-text,
@@ -526,6 +665,52 @@ html[dir="rtl"] .hero-bg p,
 html[dir="rtl"] .hero-bg .text-secondary {
   font-family: var(--font-arabic), 'Tajawal', sans-serif;
   /* Override Work Sans for Arabic */
+  color: #ffffff;
+  opacity: 1;
+  z-index: 3;
+  /* Enhanced text shadow for better readability against background */
+  text-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.7),
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 16px rgba(0, 0, 0, 0.3);
+  /* Crisp text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+html[dir="rtl"] .hero-bg .text-secondary {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.7),
+    0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Ensure Arabic text container has no background */
+html[dir="rtl"] .hero-bg .container-max > div:first-child {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Arabic description text - no background */
+html[dir="rtl"] .hero-bg .grid > div:first-child > p.body-text.text-secondary {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: rgba(255, 255, 255, 0.95);
+  /* Enhanced text shadow for better readability against background image */
+  text-shadow: 
+    0 1px 4px rgba(0, 0, 0, 0.8),
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+html[dir="rtl"] .hero-bg .grid > div:first-child > p.body-text.text-secondary:hover {
+  background: transparent;
 }
 
 /* Dropdown menu animations */

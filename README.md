@@ -37,3 +37,5 @@ Our website includes:
 1. Clone this repository:
    ```bash
    git clone https://github.com/Akooni/CSS-Group.git
+   npm install "to get all needed to open it"
+   npm run dev 
