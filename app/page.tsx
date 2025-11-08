@@ -239,10 +239,10 @@ export default function Page() {
                   href="https://www.du.edu.om"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-secondary hover:text-primary text-sm transition-colors proximity-hover inline-flex items-center gap-1 w-fit"
+                  className="university-website-link text-secondary hover:text-primary text-sm transition-colors proximity-hover inline-flex items-center w-fit"
                 >
                   {t('footer.universityLink')}
-                  <span className="text-xs" aria-hidden="true">↗</span>
+                  <span className="text-xs arrow-spacer" aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>

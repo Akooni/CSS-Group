@@ -269,7 +269,7 @@ p {
     linear-gradient(180deg, rgba(8, 11, 30, 0.6) 0%, rgba(8, 11, 30, 0.4) 50%, rgba(7, 18, 46, 0.3) 100%),
     /* Background image */
     url('/back3.png');
-  background-size: cover;
+  background-size: 120% auto; /* Zoomed out slightly - shows more of the image */
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -277,19 +277,64 @@ p {
   /* Ensure background image is visible */
   image-rendering: auto;
   -webkit-font-smoothing: antialiased;
+  /* Thin colored accent line at top */
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, #6a5df7 0%, #4fd1ff 100%) 1;
+  box-shadow: inset 0 3px 0 0 rgba(106, 93, 247, 0.4), 0 2px 8px rgba(106, 93, 247, 0.4);
 }
 
-/* Thin colored accent line at top of hero for energy */
+/* Top fade-in gradient to blend with website background */
 .hero-bg::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #6a5df7 0%, #4fd1ff 100%);
-  z-index: 2;
-  box-shadow: 0 2px 8px rgba(106, 93, 247, 0.4);
+  height: 40%; /* Fade covers top 40% of hero section */
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 26, 1) 0%,
+    rgba(10, 10, 26, 0.98) 5%,
+    rgba(10, 10, 26, 0.95) 10%,
+    rgba(10, 10, 26, 0.9) 15%,
+    rgba(14, 15, 42, 0.8) 25%,
+    rgba(18, 27, 69, 0.7) 35%,
+    rgba(18, 27, 69, 0.55) 45%,
+    rgba(14, 15, 42, 0.4) 55%,
+    rgba(14, 15, 42, 0.25) 65%,
+    rgba(10, 10, 26, 0.15) 75%,
+    rgba(10, 10, 26, 0.05) 85%,
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+/* Fade-out gradient at bottom of hero to blend with website gradient - smooth transition */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70%; /* Extended fade area for smoother transition */
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(10, 10, 26, 0.05) 10%,
+    rgba(10, 10, 26, 0.15) 20%,
+    rgba(14, 15, 42, 0.25) 30%,
+    rgba(14, 15, 42, 0.4) 40%,
+    rgba(18, 27, 69, 0.55) 50%,
+    rgba(18, 27, 69, 0.7) 60%,
+    rgba(22, 43, 111, 0.8) 70%,
+    rgba(10, 10, 26, 0.9) 80%,
+    rgba(10, 10, 26, 0.95) 90%,
+    rgba(10, 10, 26, 0.98) 95%,
+    rgba(10, 10, 26, 1) 100%
+  );
+  z-index: 1;
+  pointer-events: none; /* Allow clicks to pass through */
 }
 
 /* Fade-in animation for hero text on page load */
@@ -394,6 +439,11 @@ p {
 }
 
 /* Hero section container - no background, shows background image directly */
+.hero-bg .container-max {
+  position: relative;
+  z-index: 2; /* Ensure content is above fade-out gradient */
+}
+
 .hero-bg .container-max > div:first-child {
   position: relative;
   z-index: 2;
@@ -441,6 +491,12 @@ p {
 
 /* Responsive padding for smaller screens */
 @media (max-width: 768px) {
+  .hero-bg {
+    /* Mobile: Keep zoomed out effect */
+    background-size: 130% auto;
+    background-attachment: scroll; /* Better performance on mobile */
+  }
+  
   .hero-bg .container-max > div:first-child {
     padding: 2rem 2rem;
     border-radius: 12px;
@@ -453,6 +509,12 @@ p {
 }
 
 @media (max-width: 480px) {
+  .hero-bg {
+    /* Small phones: Slightly more zoomed out for better view */
+    background-size: 140% auto;
+    background-attachment: scroll;
+  }
+  
   .hero-bg .container-max > div:first-child {
     padding: 1.5rem 1.5rem;
   }
@@ -545,6 +607,18 @@ footer a {
   /* Remove any box/border on hover */
   outline: none;
   box-shadow: none;
+}
+
+/* University link spacing - ensure space between text and arrow */
+footer .university-website-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+footer .university-website-link .arrow-spacer {
+  margin-left: 0.5rem !important;
+  display: inline-block !important;
 }
 
 footer a:hover {
