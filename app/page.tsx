@@ -228,7 +228,9 @@ export default function Page() {
                       }
                     }}
                   />
-                  <span className="text-primary font-semibold text-base">Dhofar University</span>
+                  <span className="university-name text-base">
+                    Dhofar University
+                  </span>
                 </div>
                 <p className="body-text text-secondary text-sm leading-relaxed">
                   {t('footer.universityDesc')}

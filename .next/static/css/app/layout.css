@@ -589,17 +589,11 @@ video {
 .hidden {
   display: none;
 }
-.h-10 {
-  height: 2.5rem;
-}
 .h-16 {
   height: 4rem;
 }
 .min-h-screen {
   min-height: 100vh;
-}
-.w-10 {
-  width: 2.5rem;
 }
 .w-56 {
   width: 14rem;
@@ -777,9 +771,6 @@ video {
 .font-bold {
   font-weight: 700;
 }
-.font-semibold {
-  font-weight: 600;
-}
 .uppercase {
   text-transform: uppercase;
 }
@@ -827,11 +818,6 @@ video {
 }
 .transition-colors {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-.transition-opacity {
-  transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1355,6 +1341,19 @@ p {
   filter: brightness(1.1) contrast(1.1);
 }
 
+/* University name - special branding color with gradient and glow */
+.university-name {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1e40af 70%, #1e3a8a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  filter: drop-shadow(0 2px 8px rgba(59, 130, 246, 0.4));
+  position: relative;
+  display: inline-block;
+}
+
 /* Footer improvements */
 footer {
   background: rgba(10, 10, 26, 0.95);
@@ -1777,10 +1776,6 @@ html[dir="rtl"] .dropdown-menu-mobile nav a {
 
 .hover\:bg-white\/10:hover {
   background-color: rgb(255 255 255 / 0.1);
-}
-
-.hover\:opacity-80:hover {
-  opacity: 0.8;
 }
 
 @supports (backdrop-filter: var(--tw)) {

@@ -520,6 +520,19 @@ p {
   filter: brightness(1.1) contrast(1.1);
 }
 
+/* University name - special branding color with gradient and glow */
+.university-name {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 30%, #1e40af 70%, #1e3a8a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  filter: drop-shadow(0 2px 8px rgba(59, 130, 246, 0.4));
+  position: relative;
+  display: inline-block;
+}
+
 /* Footer improvements */
 footer {
   background: rgba(10, 10, 26, 0.95);
