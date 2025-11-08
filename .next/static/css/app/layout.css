@@ -808,20 +808,21 @@ video {
   transition-duration: 150ms;
 }
 
-/* Design tokens from Design.json */
+/* Design tokens - Refined professional color palette */
 :root {
-  --color-primary: #6C2CF1;
-  --color-secondary: #00B2FF;
+  --color-primary: #4c47d5;
+  --color-secondary: #2f80ed;
   --color-accent: #FF7A00;
-  --color-background: #0D0D12;
+  --color-background: #0a0a1a;
   --color-surface: #FFFFFF;
   --color-grid-line: rgba(255, 255, 255, 0.1);
-  --text-primary: #FFFFFF;
-  --text-secondary: #B3B3C0;
+  --text-primary: #ecf2ff;
+  --text-secondary: #b8b8c8;
 
   --radius-card: 16px;
   --radius-button: 12px;
-  --shadow-elev: 0px 8px 24px rgba(0, 0, 0, 0.15);
+  --shadow-elev: 0px 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-soft: 0px 4px 16px rgba(0, 0, 0, 0.15);
   --container-padding: 24px;
   --grid-spacing: 24px;
 
@@ -838,15 +839,17 @@ video {
   --transition-fast: 0.25s;
 }
 
-/* Background: gradient + subtle grid + faint particles */
+/* Background: smooth dark-to-light gradient with subtle particles */
 html, body { height: 100%; }
 body {
   color: var(--text-primary);
-  background-color: var(--color-background);
+  background-color: #0a0a1a;
   background-image:
-    /* particles */ radial-gradient(1200px 600px at 80% 10%, color-mix(in oklab, var(--color-primary) 40%, transparent), transparent 60%),
-    radial-gradient(900px 500px at 10% 20%, color-mix(in oklab, var(--color-secondary) 35%, transparent), transparent 60%),
-    /* main gradient */ linear-gradient(to bottom, color-mix(in oklab, var(--color-primary) 35%, transparent), color-mix(in oklab, var(--color-secondary) 35%, transparent));
+    /* Subtle particles - reduced intensity for calmer look */
+    radial-gradient(1200px 600px at 80% 10%, rgba(76, 71, 213, 0.15), transparent 60%),
+    radial-gradient(900px 500px at 10% 20%, rgba(47, 128, 237, 0.12), transparent 60%),
+    /* Main smooth gradient: dark navy to blue */
+    linear-gradient(to bottom, #0a0a1a 0%, #0e0f2a 30%, #121b45 60%, #162b6f 100%);
   background-size:
     100% 100%,
     100% 100%,
@@ -872,13 +875,21 @@ body {
 .bg-surface     { background-color: color-mix(in oklab, var(--color-surface) 8%, transparent); }
 .border-accent  { border-color: var(--color-secondary); }
 
-/* Motion utilities following design system */
+/* Motion utilities - subtle hover effects */
 .hover-glow {
-  transition: transform var(--transition-fast) var(--ease-standard), box-shadow var(--transition-fast) var(--ease-standard), background-color var(--transition-fast) var(--ease-standard), border-color var(--transition-fast) var(--ease-standard);
+  transition: transform var(--transition-fast) var(--ease-standard), 
+              box-shadow var(--transition-fast) var(--ease-standard), 
+              background-color var(--transition-fast) var(--ease-standard), 
+              border-color var(--transition-fast) var(--ease-standard);
 }
 .hover-glow:hover {
-  transform: translateY(-1px) scale(1.02);
-  box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 45%, transparent), 0 10px 28px color-mix(in oklab, var(--color-primary) 30%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 
+    0px 6px 20px rgba(0, 0, 0, 0.3),
+    0px 3px 12px rgba(111, 153, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: rgba(9, 13, 33, 0.65);
+  border-color: rgba(111, 153, 255, 0.35);
 }
 
 /* Container width and spacing */
@@ -888,43 +899,144 @@ body {
   .section-y { padding-top: calc(var(--grid-spacing) * 6); padding-bottom: calc(var(--grid-spacing) * 6); }
 }
 
-/* Button tokens */
-.btn { display: inline-flex; align-items: center; gap: 0.5rem; border-radius: var(--radius-button); padding: 12px 24px; font-weight: 600; transition: transform var(--transition-fast) var(--ease-standard), box-shadow var(--transition-fast) var(--ease-standard), background-color var(--transition-fast) var(--ease-standard), color var(--transition-fast) var(--ease-standard), border-color var(--transition-fast) var(--ease-standard); text-transform: uppercase; letter-spacing: 0.04em; border: 1px solid color-mix(in oklab, var(--color-surface) 12%, transparent); }
-.btn-primary { background: var(--color-primary); color: var(--text-primary); border-color: color-mix(in oklab, var(--color-primary) 60%, transparent); }
-.btn-primary:hover { transform: translateY(-1px) scale(1.03); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 55%, transparent), 0 14px 36px color-mix(in oklab, var(--color-primary) 35%, transparent); }
-.btn-secondary { background: var(--color-secondary); color: var(--text-primary); border-color: color-mix(in oklab, var(--color-secondary) 60%, transparent); }
-.btn-secondary:hover { transform: translateY(-1px) scale(1.03); box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-secondary) 55%, transparent), 0 14px 36px color-mix(in oklab, var(--color-secondary) 35%, transparent); }
+/* Button tokens - student-friendly with warmer, friendlier colors */
+.btn { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  border-radius: 4px; 
+  padding: 12px 24px; 
+  font-weight: 600; 
+  transition: transform var(--transition-fast) var(--ease-standard), 
+              box-shadow var(--transition-fast) var(--ease-standard), 
+              background-color var(--transition-fast) var(--ease-standard), 
+              background-image var(--transition-fast) var(--ease-standard),
+              color var(--transition-fast) var(--ease-standard), 
+              border-color var(--transition-fast) var(--ease-standard); 
+  text-transform: uppercase; 
+  letter-spacing: 0.04em; 
+  border: none;
+}
+
+.btn-primary { 
+  background: linear-gradient(135deg, #6a5df7 0%, #4fd1ff 100%);
+  color: #ffffff; 
+  border: none;
+  box-shadow: 
+    0 4px 16px rgba(106, 93, 247, 0.35),
+    0 2px 8px rgba(79, 209, 255, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover { 
+  background: linear-gradient(135deg, #7a6ef8 0%, #5fe1ff 100%);
+  transform: translateY(-2px); 
+  box-shadow: 
+    0 6px 20px rgba(106, 93, 247, 0.4),
+    0 4px 12px rgba(79, 209, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary { 
+  background: #3ba4ff; 
+  color: #ffffff; 
+  border: none;
+  box-shadow: 
+    0 4px 16px rgba(59, 164, 255, 0.35),
+    0 2px 8px rgba(59, 164, 255, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary:hover { 
+  background: #4bb4ff;
+  transform: translateY(-2px); 
+  box-shadow: 
+    0 6px 20px rgba(59, 164, 255, 0.4),
+    0 4px 12px rgba(59, 164, 255, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.15);
+}
 
 /* A11y focus ring aligned with tokens */
 :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 2px; }
 
-/* Hero section with background image */
+/* Hero section with background image - refreshed with student-friendly colors */
 .hero-bg {
   position: relative;
   background-image: 
-    /* Dark overlay for text readability */
-    linear-gradient(rgba(15, 15, 30, 0.8), rgba(15, 15, 30, 0.8)),
+    /* Soft top overlay gradient for depth and welcoming feel */
+    linear-gradient(180deg, rgba(8, 11, 30, 1) 0%, rgba(8, 11, 30, 0.4) 45%, rgba(7, 18, 46, 0) 100%),
     /* Background image */
-    url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97');
+    url('/back3.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* Thin colored accent line at top of hero for energy */
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6a5df7 0%, #4fd1ff 100%);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(106, 93, 247, 0.4);
 }
 
 .hero-bg h2 {
   position: relative;
   z-index: 1;
+  color: #ecf2ff;
 }
 
-/* Glass card common base (used by Card component too) */
+.hero-bg .body-text {
+  color: #ecf2ff;
+  opacity: 0.95;
+}
+
+.hero-bg .text-secondary {
+  color: rgba(236, 242, 255, 0.85);
+}
+
+/* Icon colors in hero cards */
+.hero-bg .glass svg {
+  color: #6a5df7;
+  filter: drop-shadow(0 0 8px rgba(106, 93, 247, 0.4));
+  transition: all var(--transition-fast) var(--ease-standard);
+}
+
+.hero-bg .glass:hover svg {
+  color: #4fd1ff;
+  filter: drop-shadow(0 0 12px rgba(79, 209, 255, 0.5));
+}
+
+/* Glass card common base - lightened for student-friendly, interactive feel */
 .glass {
-  background: color-mix(in oklab, var(--color-surface) 8%, transparent);
-  border: 1px solid color-mix(in oklab, var(--color-surface) 14%, transparent);
+  background: rgba(9, 13, 33, 0.55);
+  border: 1px solid rgba(111, 153, 255, 0.25);
   border-radius: var(--radius-card);
-  box-shadow: var(--shadow-elev);
-  backdrop-filter: saturate(140%) blur(8px);
+  box-shadow: 
+    0px 4px 16px rgba(0, 0, 0, 0.25),
+    0px 2px 8px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
   padding: 1.5rem;
+  transition: all var(--transition-fast) var(--ease-standard);
+}
+
+/* Hero section cards - enhanced for welcoming feel */
+.hero-bg .glass {
+  background: rgba(9, 13, 33, 0.6);
+  border: 1px solid rgba(111, 153, 255, 0.3);
+  box-shadow: 
+    0px 6px 20px rgba(0, 0, 0, 0.3),
+    0px 3px 12px rgba(106, 93, 247, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Logo: enlarge and visually remove white PNG backgrounds on dark BG */
@@ -935,8 +1047,8 @@ body {
      object-fit: contain;
   /* On dark backgrounds this hides white backgrounds nicely */
   mix-blend-mode: multiply;
-  /* Soft edge + glow */
-  filter: drop-shadow(0 4px 18px color-mix(in oklab, var(--color-primary) 35%, transparent));
+  /* Soft edge + subtle glow */
+  filter: drop-shadow(0 4px 18px rgba(76, 71, 213, 0.2));
 }
 
 /* Footer logo - no blend mode, normal colors */
@@ -951,7 +1063,9 @@ body {
 
 /* Footer improvements */
 footer {
-  background: color-mix(in oklab, var(--color-background) 95%, transparent);
+  background: rgba(10, 10, 26, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 footer a {
@@ -962,8 +1076,8 @@ footer a {
 }
 
 footer a:hover {
-  /* Only color change, no box */
-  color: var(--color-primary) !important;
+  /* Subtle color change */
+  color: #5a54e0 !important;
   transform: none;
   box-shadow: none;
   background: transparent;
@@ -1001,7 +1115,22 @@ footer .proximity-hover:hover {
 }
 
 .card:hover, .glass:hover {
-  transform: translateY(-6px);
+  transform: translateY(-3px);
+  box-shadow: 
+    0px 8px 24px rgba(0, 0, 0, 0.35),
+    0px 4px 12px rgba(111, 153, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  background: rgba(9, 13, 33, 0.65);
+  border-color: rgba(111, 153, 255, 0.4);
+}
+
+.hero-bg .glass:hover {
+  background: rgba(9, 13, 33, 0.7);
+  border-color: rgba(111, 153, 255, 0.45);
+  box-shadow: 
+    0px 10px 28px rgba(0, 0, 0, 0.4),
+    0px 5px 16px rgba(106, 93, 247, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /* Card title improvements */
@@ -1042,15 +1171,19 @@ html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .head
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-/* Dropdown menu with gradient background */
+/* Dropdown menu with refined gradient background */
 .dropdown-menu {
   background: linear-gradient(135deg, 
-    color-mix(in oklab, var(--color-primary) 95%, transparent) 0%,
-    color-mix(in oklab, var(--color-secondary) 90%, transparent) 100%);
-  border: 1px solid color-mix(in oklab, var(--color-surface) 25%, transparent);
+    rgba(76, 71, 213, 0.15) 0%,
+    rgba(47, 128, 237, 0.12) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-card);
-  box-shadow: 0 8px 32px rgba(108, 44, 241, 0.4), 0 0 0 1px color-mix(in oklab, var(--color-primary) 40%, transparent);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   backdrop-filter: saturate(140%) blur(12px);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
   animation: slideDown 0.2s ease-out;
 }
 
@@ -1059,8 +1192,8 @@ html[dir="rtl"] .heading-xxl, html[dir="rtl"] .heading-xl, html[dir="rtl"] .head
   border-radius: 0;
   border: none;
   background: linear-gradient(135deg, 
-    color-mix(in oklab, var(--color-primary) 98%, transparent) 0%,
-    color-mix(in oklab, var(--color-secondary) 95%, transparent) 100%);
+    rgba(10, 10, 26, 0.98) 0%,
+    rgba(18, 43, 111, 0.95) 100%);
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.5);
   -webkit-overflow-scrolling: touch;
   min-height: 100vh;
@@ -1127,41 +1260,38 @@ html[dir="rtl"] .dropdown-menu-mobile nav a {
 }
 
 .dropdown-menu nav a:hover {
-  background: color-mix(in oklab, var(--color-surface) 20%, transparent);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
 }
 
 /* Featured Join button in dropdown */
 .dropdown-menu .btn-primary {
-  box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 60%, transparent), 
-              0 8px 24px color-mix(in oklab, var(--color-primary) 40%, transparent);
+  box-shadow: 0 4px 16px rgba(76, 71, 213, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile dropdown join button - bright and contrasting */
+/* Mobile dropdown join button - refined with new color scheme */
 .mobile-join-btn {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F0F0F0 100%);
-  color: var(--color-primary);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: #4c47d5;
+  color: var(--text-primary);
+  border: 1px solid rgba(76, 71, 213, 0.4);
   box-shadow: 
-    0 4px 16px rgba(255, 255, 255, 0.2),
-    0 0 0 1px rgba(255, 255, 255, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    0 4px 16px rgba(76, 71, 213, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.2);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 
 .mobile-join-btn:hover {
-  background: linear-gradient(135deg, #FFFFFF 0%, #E8E8E8 100%);
+  background: #5a54e0;
   box-shadow: 
-    0 6px 20px rgba(255, 255, 255, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  transform: translateY(-2px) scale(1.02);
+    0 6px 20px rgba(76, 71, 213, 0.4),
+    0 3px 12px rgba(0, 0, 0, 0.25);
+  transform: translateY(-1px);
 }
 
 .mobile-join-btn:active {
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
 .hover\:scale-105:hover {
