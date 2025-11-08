@@ -34,8 +34,13 @@
 }
 
 /* Background: smooth dark-to-light gradient with subtle particles */
-html, body { height: 100%; }
-body {
+html { 
+  height: 100%; 
+  scroll-behavior: smooth;
+}
+
+body { 
+  height: 100%; 
   color: var(--text-primary);
   background-color: #0a0a1a;
   background-image:
@@ -117,12 +122,13 @@ p {
 .bg-surface     { background-color: color-mix(in oklab, var(--color-surface) 8%, transparent); }
 .border-accent  { border-color: var(--color-secondary); }
 
-/* Motion utilities - subtle hover effects */
+/* Motion utilities - subtle hover effects with soft glow */
 .hover-glow {
   transition: transform var(--transition-fast) var(--ease-standard), 
               box-shadow var(--transition-fast) var(--ease-standard), 
               background-color var(--transition-fast) var(--ease-standard), 
-              border-color var(--transition-fast) var(--ease-standard);
+              border-color var(--transition-fast) var(--ease-standard),
+              text-shadow var(--transition-fast) var(--ease-standard);
 }
 .hover-glow:hover {
   transform: translateY(-2px);
@@ -132,6 +138,11 @@ p {
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   background: rgba(9, 13, 33, 0.65);
   border-color: rgba(111, 153, 255, 0.35);
+  /* Soft glow effect on navigation links */
+  text-shadow: 
+    0 0 8px rgba(106, 93, 247, 0.5),
+    0 0 12px rgba(79, 209, 255, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Container width and spacing */
@@ -229,6 +240,37 @@ p {
   box-shadow: 0 2px 8px rgba(106, 93, 247, 0.4);
 }
 
+/* Fade-in animation for hero text on page load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg h2,
+  .hero-bg .heading-xl,
+  .hero-bg h1,
+  .hero-bg h3,
+  .hero-bg .body-text,
+  .hero-bg p,
+  .hero-bg .text-secondary,
+  .hero-bg .container-max > div:first-child {
+    animation: none;
+    opacity: 1;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 /* Hero section typography - Fira Code for headings, Work Sans for body */
 .hero-bg h2,
 .hero-bg .heading-xl,
@@ -242,6 +284,10 @@ p {
   letter-spacing: 0.01em;
   line-height: 1.3;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  /* Fade-in animation on page load */
+  animation: fadeInUp 0.8s ease-out;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
 .hero-bg .body-text,
@@ -254,11 +300,26 @@ p {
   font-weight: 400;
   line-height: 1.6;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  /* Fade-in animation with delay */
+  animation: fadeInUp 0.8s ease-out 0.2s;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
 .hero-bg .text-secondary {
   color: rgba(236, 242, 255, 0.85);
   font-family: var(--font-body-family);
+  /* Fade-in animation with delay */
+  animation: fadeInUp 0.8s ease-out 0.3s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* Hero section container fade-in */
+.hero-bg .container-max > div:first-child {
+  animation: fadeInUp 0.8s ease-out 0.1s;
+  opacity: 0;
+  animation-fill-mode: forwards;
 }
 
 /* Icon colors in hero cards */
@@ -333,11 +394,15 @@ footer a {
 }
 
 footer a:hover {
-  /* Subtle color change */
+  /* Subtle color change with soft glow */
   color: #5a54e0 !important;
   transform: none;
   box-shadow: none;
   background: transparent;
+  text-shadow: 
+    0 0 8px rgba(106, 93, 247, 0.4),
+    0 0 12px rgba(79, 209, 255, 0.3);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 footer .fa-brands {
@@ -350,20 +415,30 @@ footer .fa-brands:hover {
   background: transparent;
 }
 
-/* Proximity hover effect - floating when mouse gets near */
+/* Proximity hover effect - floating when mouse gets near with soft glow */
 .proximity-hover {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              color 0.3s ease,
+              text-shadow 0.3s ease,
+              box-shadow 0.3s ease;
   position: relative;
   display: inline-block;
 }
 
 .proximity-hover:hover {
   transform: translateY(-4px);
+  /* Soft glow effect on hover */
+  text-shadow: 
+    0 0 8px rgba(106, 93, 247, 0.4),
+    0 0 16px rgba(79, 209, 255, 0.3);
 }
 
 /* Special hover for social icons */
 footer .proximity-hover:hover {
   transform: translateY(-8px) scale(1.1);
+  text-shadow: 
+    0 0 12px rgba(106, 93, 247, 0.5),
+    0 0 24px rgba(79, 209, 255, 0.4);
 }
 
 /* Apply proximity hover to cards and buttons */
@@ -558,9 +633,25 @@ html[dir="rtl"] .dropdown-menu-mobile nav a {
   text-align: right;
 }
 
-.dropdown-menu nav a:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-1px);
+/* Navigation links hover effect with soft glow */
+.dropdown-menu nav a,
+.dropdown-menu-mobile nav a {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.dropdown-menu nav a:hover,
+.dropdown-menu-mobile nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  /* Soft glow effect on navigation links */
+  text-shadow: 
+    0 0 8px rgba(106, 93, 247, 0.5),
+    0 0 12px rgba(79, 209, 255, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+  box-shadow: 
+    0 4px 12px rgba(106, 93, 247, 0.2),
+    0 2px 6px rgba(79, 209, 255, 0.15);
 }
 
 /* Featured Join button in dropdown */
