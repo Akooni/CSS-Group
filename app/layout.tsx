@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Press_Start_2P, Montserrat, Poppins, Inter, Tajawal } from 'next/font/google';
+import { Press_Start_2P, Montserrat, Poppins, Inter, Tajawal, Fira_Code, Work_Sans } from 'next/font/google';
 import { DirectionProvider } from '../components/providers/DirectionProvider';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import { FontAwesomeLoader } from '../components/FontAwesomeLoader';
@@ -13,6 +13,8 @@ const pixel = Press_Start_2P({ weight: '400', subsets: ['latin'] });
 const montserrat = Montserrat({ subsets: ['latin'] });
 const poppins = Poppins({ weight: ['600','700','800'], subsets: ['latin'] });
 const inter = Inter({ subsets: ['latin'] });
+const firaCode = Fira_Code({ weight: ['400', '500', '600', '700'], subsets: ['latin'], variable: '--font-fira-code' });
+const workSans = Work_Sans({ weight: ['400', '500', '600'], subsets: ['latin'], variable: '--font-work-sans' });
 const tajawal = Tajawal({ weight: ['400','500','700'], subsets: ['arabic'], variable: '--font-arabic' });
 
 export const metadata: Metadata = {
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`min-h-screen antialiased ${inter.className} ${tajawal.variable}`}>
+      <body className={`min-h-screen antialiased ${firaCode.variable} ${workSans.variable} ${tajawal.variable} ${workSans.className}`}>
         {/* Sticky top navigation */}
         <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30 border-b border-white/10">
           <nav className="container-max flex items-center justify-between h-16">
