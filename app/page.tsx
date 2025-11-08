@@ -191,7 +191,7 @@ export default function Page() {
       {/* Footer */}
       <footer className="section-y border-t" style={{ borderColor: 'var(--color-grid-line)' }}>
         <div className="container-max">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Column 1: About + Logo */}
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3">
@@ -209,7 +209,43 @@ export default function Page() {
               </p>
             </div>
 
-            {/* Column 2: Quick Links */}
+            {/* Column 2: Our University */}
+            <div className="flex flex-col gap-4">
+              <h3 className="heading-lg text-sm mb-2">{t('footer.ourUniversity')}</h3>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-3">
+                  <Image
+                    src="/university-logo.png"
+                    alt="Dhofar University logo"
+                    width={64}
+                    height={64}
+                    className="object-contain"
+                    onError={(e) => {
+                      // Hide image if logo doesn't exist
+                      const target = e.target as HTMLImageElement;
+                      if (target.parentElement) {
+                        target.parentElement.style.display = 'none';
+                      }
+                    }}
+                  />
+                  <span className="text-primary font-semibold text-base">Dhofar University</span>
+                </div>
+                <p className="body-text text-secondary text-sm leading-relaxed">
+                  {t('footer.universityDesc')}
+                </p>
+                <a
+                  href="https://www.du.edu.om"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-secondary hover:text-primary text-sm transition-colors proximity-hover inline-flex items-center gap-1 w-fit"
+                >
+                  {t('footer.universityLink')}
+                  <span className="text-xs" aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Column 3: Quick Links */}
             <div className="flex flex-col gap-4">
               <h3 className="heading-lg text-sm mb-2">{t('footer.quickLinks')}</h3>
               <nav className="flex flex-col gap-3">
@@ -231,7 +267,7 @@ export default function Page() {
               </nav>
             </div>
 
-            {/* Column 3: Follow Us */}
+            {/* Column 4: Follow Us */}
             <div className="flex flex-col gap-4">
               <h3 className="heading-lg text-sm mb-2">{t('footer.followUs')}</h3>
               <div className="flex items-center gap-4">

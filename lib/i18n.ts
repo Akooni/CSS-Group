@@ -37,6 +37,9 @@ const resources = {
       join: { title: 'Ready to Join?', subtitle: 'Be part of a community that learns and builds together.' },
       footer: {
         about: 'The Computer Science Society is a student-led community at Dhofar University dedicated to practical learning, building projects, and preparing for tech careers.',
+        ourUniversity: 'Our University',
+        universityDesc: 'Proudly part of Dhofar University, fostering innovation and excellence in computer science education.',
+        universityLink: 'Visit University Website',
         quickLinks: 'Quick Links',
         followUs: 'Follow Us',
         events: 'Events',
@@ -79,6 +82,9 @@ const resources = {
       join: { title: 'جاهز للانضمام؟', subtitle: 'كن جزءًا من مجتمع يتعلم ويبني معًا.' },
       footer: {
         about: 'جمعية علوم الحاسوب مجتمع طلابي في جامعة ظفار مكرّس للتعلم العملي وبناء المشاريع والاستعداد للمسارات المهنية في التقنية.',
+        ourUniversity: 'جامعتنا',
+        universityDesc: 'نفتخر بانتمائنا لجامعة ظفار، التي تدعم الابتكار والتميز في تعليم علوم الحاسوب.',
+        universityLink: 'زيارة موقع الجامعة',
         quickLinks: 'روابط سريعة',
         followUs: 'تابعنا',
         events: 'الفعاليات',
