@@ -3,11 +3,11 @@ import * as React from 'react';
 import i18n from '../../lib/i18n';
 
 type Dir = 'ltr' | 'rtl';
-const DirectionContext = React.createContext<Dir>('ltr');
+const DirectionContext = React.createContext<Dir>('rtl');
 export const useDir = () => React.useContext(DirectionContext);
 
 export function DirectionProvider({ children }: { children: React.ReactNode }) {
-  const [dir, setDir] = React.useState<Dir>((i18n.language || 'en').startsWith('ar') ? 'rtl' : 'ltr');
+  const [dir, setDir] = React.useState<Dir>((i18n.language || 'ar').startsWith('ar') ? 'rtl' : 'ltr');
 
   React.useEffect(() => {
     const apply = (lng: string) => {

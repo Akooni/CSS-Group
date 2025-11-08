@@ -191,26 +191,75 @@ p {
 }
 
 .btn-secondary { 
-  background: #3ba4ff; 
+  /* Gradient matching website theme: #4b6cb7 → #182848 */
+  background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
   color: #ffffff; 
   border: none;
+  /* Same design as "Join the Community" button - rounded, shadow, hover glow */
+  border-radius: 4px;
   box-shadow: 
-    0 4px 16px rgba(59, 164, 255, 0.35),
-    0 2px 8px rgba(59, 164, 255, 0.25),
+    0 4px 16px rgba(75, 108, 183, 0.4),
+    0 2px 8px rgba(24, 40, 72, 0.3),
     0 0 0 1px rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform var(--transition-fast) var(--ease-standard), 
+              box-shadow var(--transition-fast) var(--ease-standard), 
+              background-image var(--transition-fast) var(--ease-standard);
 }
 
 .btn-secondary:hover { 
-  background: #4bb4ff;
+  /* Brighter gradient on hover with glow effect */
+  background: linear-gradient(135deg, #5b7cc7 0%, #283858 100%);
   transform: translateY(-2px); 
   box-shadow: 
-    0 6px 20px rgba(59, 164, 255, 0.4),
-    0 4px 12px rgba(59, 164, 255, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.15);
+    0 6px 20px rgba(75, 108, 183, 0.5),
+    0 4px 12px rgba(24, 40, 72, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 0 24px rgba(75, 108, 183, 0.3);
 }
 
-/* A11y focus ring aligned with tokens */
-:focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 2px; }
+.btn-secondary:focus-visible {
+  /* Subtle focus ring matching gradient theme */
+  outline: 2px solid rgba(75, 108, 183, 0.6);
+  outline-offset: 3px;
+  box-shadow: 
+    0 4px 16px rgba(75, 108, 183, 0.4),
+    0 2px 8px rgba(24, 40, 72, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 0 3px rgba(75, 108, 183, 0.3);
+}
+
+.btn-secondary:active {
+  /* Subtle press effect */
+  transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(75, 108, 183, 0.4),
+    0 1px 4px rgba(24, 40, 72, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Active/pressed state for language switcher buttons */
+.btn-secondary[aria-pressed="true"] {
+  background: linear-gradient(135deg, #5b7cc7 0%, #283858 100%);
+  box-shadow: 
+    0 4px 16px rgba(75, 108, 183, 0.6),
+    0 2px 8px rgba(24, 40, 72, 0.5),
+    0 0 0 2px rgba(75, 108, 183, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+/* Remove default outline for buttons (they have custom focus styles) */
+.btn:focus-visible {
+  outline: none;
+}
+
+/* A11y focus ring for non-button elements */
+:focus-visible:not(.btn) { 
+  outline: 2px solid var(--color-secondary); 
+  outline-offset: 2px; 
+}
 
 /* Hero section with background image - unified dark transparent overlay */
 .hero-bg {

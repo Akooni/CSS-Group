@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="ar">
       <body className={`min-h-screen antialiased ${firaCode.variable} ${workSans.variable} ${tajawal.variable} ${workSans.className}`}>
         {/* Sticky top navigation */}
         <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/30 border-b border-white/10">

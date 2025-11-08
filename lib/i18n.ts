@@ -6,25 +6,25 @@ const resources = {
   en: {
     translation: {
       nav: { about: 'About', whatIs: 'What is CSS Group?', activities: 'What We Do', majors: 'Majors', join: 'Join' },
-      hero: { title: 'Computer Science Society', tagline: 'Learn together. Build together. Succeed together.' },
+      hero: { title: 'Learn together. Build together. Succeed together.', tagline: 'A student community focused on hands-on learning, collaborative projects, and career preparation.' },
       cta: { join: 'Join the Community', exploreMajors: 'Explore Majors', seeActivities: 'See Activities' },
       about: {
         title: 'About Us', subtitle: 'We make learning computer science practical, fun, and collaborative.',
         cards: {
-          peerTitle: 'Peer Learning', peerDesc: 'Work with supportive peers who help you grow.', peerBody: 'Weekly sessions focused on building skills through practice.',
-          projectTitle: 'Project First', projectDesc: 'Real projects that you can show recruiters.', projectBody: 'From idea to demo night—ship something you are proud of.',
+          peerTitle: 'Peer Learning', peerDesc: 'Work with supportive peers who help you grow.', peerBody: 'Collaborative learning sessions focused on building skills through practice.',
+          projectTitle: 'Project First', projectDesc: 'Real projects that you can show recruiters.', projectBody: 'From idea to completion—ship something you are proud of.',
           careerTitle: 'Career Ready', careerDesc: 'Interview practice and industry insights.', careerBody: 'We prepare you for internships, competitions, and jobs.'
         }
       },
       whatIs: {
         title: 'What is CSS Group?', subtitle: 'An inclusive community where you can explore, specialize, and lead.',
-        p1: 'The Computer Science Society (CSS) is a student community dedicated to practical learning. We run events that help you master technologies used in the real world and build a strong portfolio.',
+        p1: 'We run hands-on workshops, collaborative projects, and career-focused events to help you master real-world technologies and build a portfolio that stands out.',
         li1: 'Beginner-friendly labs and workshops', li2: 'Mentored projects and study groups', li3: 'Talks from alumni and professionals', li4: 'Open to all students—no experience required'
       },
       activities: {
         title: 'What We Do', subtitle: 'Learn by doing—events that grow your skills and network.',
         w1: { title: 'Workshops & Labs', desc: 'Guided, hands-on sessions', body: 'Build apps, analyze data, and learn modern dev tools.' },
-        w2: { title: 'Projects & Showcases', desc: 'Team up and ship', body: 'Real-world projects with demo nights and feedback.' },
+        w2: { title: 'Projects & Showcases', desc: 'Team up and ship', body: 'Real-world projects with peer feedback and collaboration.' },
         w3: { title: 'Career & Competitions', desc: 'Prepare and compete', body: 'Interview prep, hackathons, and CTF-style challenges.' }
       },
       majors: {
@@ -48,25 +48,25 @@ const resources = {
   ar: {
     translation: {
       nav: { about: 'من نحن', whatIs: 'ما هي مجموعة CSS؟', activities: 'ماذا نفعل', majors: 'التخصصات', join: 'انضم' },
-      hero: { title: 'جمعية علوم الحاسوب', tagline: 'نتعلم معًا. نبني معًا. ننجح معًا.' },
+      hero: { title: 'نتعلم معًا. نبني معًا. ننجح معًا.', tagline: 'مجتمع طلابي يركز على التعلم العملي والمشاريع التعاونية والاستعداد للمسار المهني.' },
       cta: { join: 'انضم إلى المجتمع', exploreMajors: 'استكشف التخصصات', seeActivities: 'شاهد الأنشطة' },
       about: {
         title: 'من نحن', subtitle: 'نجعل تعلم علوم الحاسوب عمليًا وممتعًا وتعاونيًا.',
         cards: {
-          peerTitle: 'التعلم مع الأقران', peerDesc: 'زملاء داعمون يساعدونك على التطور.', peerBody: 'جلسات أسبوعية تركز على بناء المهارات بالممارسة.',
-          projectTitle: 'المشاريع أولًا', projectDesc: 'مشاريع حقيقية تعرضها لأصحاب العمل.', projectBody: 'من الفكرة إلى ليلة العرض — أنجز شيئًا تفخر به.',
+          peerTitle: 'التعلم مع الأقران', peerDesc: 'زملاء داعمون يساعدونك على التطور.', peerBody: 'جلسات تعلم تعاونية تركز على بناء المهارات بالممارسة.',
+          projectTitle: 'المشاريع أولًا', projectDesc: 'مشاريع حقيقية تعرضها لأصحاب العمل.', projectBody: 'من الفكرة إلى الإنجاز — أنجز شيئًا تفخر به.',
           careerTitle: 'جاهزية مهنية', careerDesc: 'تدريب مقابلات ورؤى مهنية.', careerBody: 'نعدّك للتدريب والبطولات والوظائف.'
         }
       },
       whatIs: {
         title: 'ما هي مجموعة CSS؟', subtitle: 'مجتمع شامل لتستكشف وتتخصص وتقود.',
-        p1: 'جمعية علوم الحاسوب هي مجتمع طلابي مكرّس للتعلم العملي. ننظّم فعاليات تساعدك على إتقان التقنيات وبناء ملف أعمال قوي.',
+        p1: 'ننظّم ورش عمل تطبيقية ومشاريع تعاونية وفعاليات مهنية لمساعدتك على إتقان التقنيات المستخدمة في الواقع العملي وبناء ملف أعمال متميز.',
         li1: 'ورش ومختبرات للمبتدئين', li2: 'مشاريع بإشراف ومجموعات دراسية', li3: 'لقاءات مع خريجين ومحترفين', li4: 'مفتوح لجميع الطلاب — لا يشترط خبرة'
       },
       activities: {
         title: 'ماذا نفعل', subtitle: 'نتعلم بالممارسة — فعاليات تنمّي مهاراتك وعلاقاتك.',
         w1: { title: 'ورش ومختبرات', desc: 'جلسات تطبيقية موجهة', body: 'نبني تطبيقات ونحلّل البيانات ونتعلم أدوات حديثة.' },
-        w2: { title: 'مشاريع وعروض', desc: 'اعمل ضمن فريق وأنجز', body: 'مشاريع واقعية مع ليالي عرض وملاحظات.' },
+        w2: { title: 'مشاريع وعروض', desc: 'اعمل ضمن فريق وأنجز', body: 'مشاريع واقعية مع ملاحظات وتعاون من الأقران.' },
         w3: { title: 'مسار مهني وبطولات', desc: 'استعد وتنافس', body: 'تدريب مقابلات وهاكاثونات وتحديات أمنية.' }
       },
       majors: {
@@ -83,7 +83,7 @@ const resources = {
         followUs: 'تابعنا',
         events: 'الفعاليات',
         projects: 'المشاريع',
-        rights: 'بُني بحب على أيدي الطلاب.'
+        rights: 'صُنع بشغفٍ على أيدي طلابنا.'
       }
     }
   }
@@ -95,10 +95,15 @@ if (!i18n.isInitialized) {
     .use(initReactI18next)
     .init({
       resources,
-      fallbackLng: 'en',
+      lng: 'ar', // Default language is Arabic
+      fallbackLng: 'ar', // Fallback to Arabic if language not found
       supportedLngs: ['en', 'ar'],
       interpolation: { escapeValue: false },
-      detection: { order: ['querystring', 'localStorage'], caches: ['localStorage'], lookupQuerystring: 'lng' },
+      detection: { 
+        order: ['querystring', 'localStorage'], 
+        caches: ['localStorage'], 
+        lookupQuerystring: 'lng',
+      },
     });
 }
 
