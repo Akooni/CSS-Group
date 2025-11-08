@@ -20,7 +20,7 @@
   --container-padding: 24px;
   --grid-spacing: 24px;
 
-  /* Typography scale - English fonts */
+  /* Typography scale - English fonts: Fira Code for headings, Work Sans for body */
   --font-heading-family: var(--font-fira-code), 'Fira Code', 'Courier New', monospace;
   --font-body-family: var(--font-work-sans), 'Work Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --heading-xxl: 96px;
@@ -56,7 +56,7 @@ body {
   min-height: 100svh;
 }
 
-/* Typography utilities - English typography with Fira Code and Work Sans */
+/* Typography utilities - English: Fira Code for headings, Work Sans for body */
 .heading-xxl { 
   font-family: var(--font-heading-family); 
   font-weight: 600; 
@@ -229,9 +229,11 @@ p {
   box-shadow: 0 2px 8px rgba(106, 93, 247, 0.4);
 }
 
-/* Hero section typography - Enhanced readability with Fira Code and Work Sans */
+/* Hero section typography - Fira Code for headings, Work Sans for body */
 .hero-bg h2,
-.hero-bg .heading-xl {
+.hero-bg .heading-xl,
+.hero-bg h1,
+.hero-bg h3 {
   position: relative;
   z-index: 1;
   color: #ecf2ff;
@@ -239,31 +241,24 @@ p {
   font-weight: 600;
   letter-spacing: 0.01em;
   line-height: 1.3;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .hero-bg .body-text,
 .hero-bg p {
+  position: relative;
+  z-index: 1;
   color: #ecf2ff;
   opacity: 0.95;
   font-family: var(--font-body-family);
   font-weight: 400;
   line-height: 1.6;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-bg .text-secondary {
   color: rgba(236, 242, 255, 0.85);
   font-family: var(--font-body-family);
-}
-
-/* Hero section headings with enhanced readability */
-.hero-bg h1,
-.hero-bg h2,
-.hero-bg h3 {
-  font-family: var(--font-heading-family);
-  color: #ecf2ff;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 /* Icon colors in hero cards */
@@ -442,16 +437,20 @@ html[dir="rtl"] .body-text {
   line-height: 1.75;
 }
 
+/* Hero section - Arabic fonts override */
 html[dir="rtl"] .hero-bg h2,
 html[dir="rtl"] .hero-bg .heading-xl,
 html[dir="rtl"] .hero-bg h1,
 html[dir="rtl"] .hero-bg h3 {
   font-family: var(--font-arabic), 'Tajawal', sans-serif;
+  /* Override Fira Code for Arabic */
 }
 
 html[dir="rtl"] .hero-bg .body-text,
-html[dir="rtl"] .hero-bg p {
+html[dir="rtl"] .hero-bg p,
+html[dir="rtl"] .hero-bg .text-secondary {
   font-family: var(--font-arabic), 'Tajawal', sans-serif;
+  /* Override Work Sans for Arabic */
 }
 
 /* Dropdown menu animations */
@@ -569,29 +568,45 @@ html[dir="rtl"] .dropdown-menu-mobile nav a {
   box-shadow: 0 4px 16px rgba(76, 71, 213, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile dropdown join button - refined with new color scheme */
+/* Mobile dropdown join button - Dark blue-purple theme to match site background */
 .mobile-join-btn {
-  background: #4c47d5;
-  color: var(--text-primary);
-  border: 1px solid rgba(76, 71, 213, 0.4);
+  /* Cool-tone gradient matching dark theme */
+  background: linear-gradient(135deg, #1b244b 0%, #2f4bff 100%);
+  color: #ffffff;
+  /* Soft border for definition */
+  border: 1px solid rgba(111, 153, 255, 0.3);
+  /* Soft glow and shadow for depth */
   box-shadow: 
-    0 4px 16px rgba(76, 71, 213, 0.3),
-    0 2px 8px rgba(0, 0, 0, 0.2);
-  font-weight: 700;
+    0 4px 16px rgba(47, 75, 255, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 20px rgba(100, 149, 237, 0.12);
+  font-family: var(--font-body-family);
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  transition: all var(--transition-fast) var(--ease-standard);
 }
 
 .mobile-join-btn:hover {
-  background: #5a54e0;
+  /* Slightly brighter gradient on hover */
+  background: linear-gradient(135deg, #223055 0%, #3a5aff 100%);
+  /* Enhanced glow and border on hover */
+  border-color: rgba(111, 153, 255, 0.5);
   box-shadow: 
-    0 6px 20px rgba(76, 71, 213, 0.4),
-    0 3px 12px rgba(0, 0, 0, 0.25);
-  transform: translateY(-1px);
+    0 6px 24px rgba(47, 75, 255, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 0 30px rgba(100, 149, 237, 0.2);
+  transform: translateY(-2px);
 }
 
 .mobile-join-btn:active {
   transform: translateY(0);
+  box-shadow: 
+    0 2px 8px rgba(47, 75, 255, 0.2),
+    0 1px 4px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
 
