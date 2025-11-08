@@ -20,8 +20,8 @@ export function Section({ title, subtitle, className, id, children, ...props }: 
                 className="heading-xl"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.25, ease: 'easeInOut' }}
+                viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
               >
                 {title}
               </motion.h2>
@@ -31,8 +31,8 @@ export function Section({ title, subtitle, className, id, children, ...props }: 
                 className="body-text text-secondary mt-3 max-w-2xl"
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.25, ease: 'easeInOut', delay: 0.05 }}
+                viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+                transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
               >
                 {subtitle}
               </motion.p>

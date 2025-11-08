@@ -40,19 +40,43 @@ export default function Page() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <motion.div className="glass p-6" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.25 }}>
+            <motion.div
+              className="glass p-6"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+            >
               <Code2 className="text-primary" />
               <p className="mt-3 body-text">{t('activities.w1.desc')}</p>
             </motion.div>
-            <motion.div className="glass p-6" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.25, delay: 0.05 }}>
+            <motion.div
+              className="glass p-6"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+            >
               <Cpu className="text-primary" />
               <p className="mt-3 body-text">{t('activities.subtitle')}</p>
             </motion.div>
-            <motion.div className="glass p-6" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.25, delay: 0.1 }}>
+            <motion.div
+              className="glass p-6"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
+            >
               <Layers className="text-primary" />
               <p className="mt-3 body-text">{t('activities.w2.desc')}</p>
             </motion.div>
-            <motion.div className="glass p-6" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.25, delay: 0.15 }}>
+            <motion.div
+              className="glass p-6"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}
+            >
               <BarChart3 className="text-primary" />
               <p className="mt-3 body-text">{t('activities.w3.desc')}</p>
             </motion.div>
@@ -64,115 +88,185 @@ export default function Page() {
       {/* About */}
       <Section id="about" title={t('about.title')} subtitle={t('about.subtitle')}>
         <div className="grid md:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader>
-              <i className="fa-solid fa-users text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
-              <CardTitle>{t('about.cards.peerTitle')}</CardTitle>
-              <CardDescription>{t('about.cards.peerDesc')}</CardDescription>
-            </CardHeader>
-            <CardContent className="text-secondary">{t('about.cards.peerBody')}</CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <i className="fa-solid fa-code text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
-              <CardTitle>{t('about.cards.projectTitle')}</CardTitle>
-              <CardDescription>{t('about.cards.projectDesc')}</CardDescription>
-            </CardHeader>
-            <CardContent className="text-secondary">{t('about.cards.projectBody')}</CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <i className="fa-solid fa-briefcase text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
-              <CardTitle>{t('about.cards.careerTitle')}</CardTitle>
-              <CardDescription>{t('about.cards.careerDesc')}</CardDescription>
-            </CardHeader>
-            <CardContent className="text-secondary">{t('about.cards.careerBody')}</CardContent>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+          >
+            <Card>
+              <CardHeader>
+                <i className="fa-solid fa-users text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
+                <CardTitle>{t('about.cards.peerTitle')}</CardTitle>
+                <CardDescription>{t('about.cards.peerDesc')}</CardDescription>
+              </CardHeader>
+              <CardContent className="text-secondary">{t('about.cards.peerBody')}</CardContent>
+            </Card>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
+          >
+            <Card>
+              <CardHeader>
+                <i className="fa-solid fa-code text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
+                <CardTitle>{t('about.cards.projectTitle')}</CardTitle>
+                <CardDescription>{t('about.cards.projectDesc')}</CardDescription>
+              </CardHeader>
+              <CardContent className="text-secondary">{t('about.cards.projectBody')}</CardContent>
+            </Card>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}
+          >
+            <Card>
+              <CardHeader>
+                <i className="fa-solid fa-briefcase text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
+                <CardTitle>{t('about.cards.careerTitle')}</CardTitle>
+                <CardDescription>{t('about.cards.careerDesc')}</CardDescription>
+              </CardHeader>
+              <CardContent className="text-secondary">{t('about.cards.careerBody')}</CardContent>
+            </Card>
+          </motion.div>
         </div>
       </Section>
 
       {/* What is CSS Group */}
       <Section id="what-is" title={t('whatIs.title')} subtitle={t('whatIs.subtitle')}>
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          <p className="body-text text-secondary">{t('whatIs.p1')}</p>
-          <div className="flex justify-center items-center">
+          <motion.p
+            className="body-text text-secondary"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+          >
+            {t('whatIs.p1')}
+          </motion.p>
+          <motion.div
+            className="flex justify-center items-center"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
+          >
             <img 
               src="/pixel-art-scene.png?v=1" 
               alt="Computer Science Society community scene" 
               className="rounded-lg w-full max-w-md shadow-lg"
               style={{ maxWidth: '100%', height: 'auto' }}
             />
-          </div>
+          </motion.div>
         </div>
       </Section>
 
       {/* What We Do */}
       <Section id="activities" title={t('activities.title')} subtitle={t('activities.subtitle')}>
         <div className="grid md:grid-cols-3 gap-6">
-          <Card>
-            <CardHeader>
-              <i className="fa-solid fa-chalkboard-user text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
-              <CardTitle>{t('activities.w1.title')}</CardTitle>
-              <CardDescription>{t('activities.w1.desc')}</CardDescription>
-            </CardHeader>
-            <CardContent className="text-secondary">{t('activities.w1.body')}</CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <i className="fa-solid fa-laptop-code text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
-              <CardTitle>{t('activities.w2.title')}</CardTitle>
-              <CardDescription>{t('activities.w2.desc')}</CardDescription>
-            </CardHeader>
-            <CardContent className="text-secondary">{t('activities.w2.body')}</CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <i className="fa-solid fa-trophy text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
-              <CardTitle>{t('activities.w3.title')}</CardTitle>
-              <CardDescription>{t('activities.w3.desc')}</CardDescription>
-            </CardHeader>
-            <CardContent className="text-secondary">{t('activities.w3.body')}</CardContent>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+          >
+            <Card>
+              <CardHeader>
+                <i className="fa-solid fa-chalkboard-user text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
+                <CardTitle>{t('activities.w1.title')}</CardTitle>
+                <CardDescription>{t('activities.w1.desc')}</CardDescription>
+              </CardHeader>
+              <CardContent className="text-secondary">{t('activities.w1.body')}</CardContent>
+            </Card>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
+          >
+            <Card>
+              <CardHeader>
+                <i className="fa-solid fa-laptop-code text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
+                <CardTitle>{t('activities.w2.title')}</CardTitle>
+                <CardDescription>{t('activities.w2.desc')}</CardDescription>
+              </CardHeader>
+              <CardContent className="text-secondary">{t('activities.w2.body')}</CardContent>
+            </Card>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}
+          >
+            <Card>
+              <CardHeader>
+                <i className="fa-solid fa-trophy text-primary mb-4" style={{ fontSize: '2.5rem' }}></i>
+                <CardTitle>{t('activities.w3.title')}</CardTitle>
+                <CardDescription>{t('activities.w3.desc')}</CardDescription>
+              </CardHeader>
+              <CardContent className="text-secondary">{t('activities.w3.body')}</CardContent>
+            </Card>
+          </motion.div>
         </div>
       </Section>
 
       {/* Majors Explained */}
       <Section id="majors" title={t('majors.title')} subtitle={t('majors.subtitle')}>
         <div className="grid md:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Database className="text-primary" />
-                <CardTitle>{t('majors.dsTitle')}</CardTitle>
-              </div>
-              <CardDescription>{t('majors.dsDesc')}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="text-secondary grid gap-2 list-disc pl-5">
-                <li>{t('majors.dsSkills.s1')}</li>
-                <li>{t('majors.dsSkills.s2')}</li>
-                <li>{t('majors.dsSkills.s3')}</li>
-                <li>{t('majors.dsSkills.s4')}</li>
-              </ul>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-2">
-                <Shield className="text-primary" />
-                <CardTitle>{t('majors.cyTitle')}</CardTitle>
-              </div>
-              <CardDescription>{t('majors.cyDesc')}</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="text-secondary grid gap-2 list-disc pl-5">
-                <li>{t('majors.cySkills.s1')}</li>
-                <li>{t('majors.cySkills.s2')}</li>
-                <li>{t('majors.cySkills.s3')}</li>
-                <li>{t('majors.cySkills.s4')}</li>
-              </ul>
-            </CardContent>
-          </Card>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+          >
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Database className="text-primary" />
+                  <CardTitle>{t('majors.dsTitle')}</CardTitle>
+                </div>
+                <CardDescription>{t('majors.dsDesc')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="text-secondary grid gap-2 list-disc pl-5">
+                  <li>{t('majors.dsSkills.s1')}</li>
+                  <li>{t('majors.dsSkills.s2')}</li>
+                  <li>{t('majors.dsSkills.s3')}</li>
+                  <li>{t('majors.dsSkills.s4')}</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.1, margin: '-50px' }}
+            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
+          >
+            <Card>
+              <CardHeader>
+                <div className="flex items-center gap-2">
+                  <Shield className="text-primary" />
+                  <CardTitle>{t('majors.cyTitle')}</CardTitle>
+                </div>
+                <CardDescription>{t('majors.cyDesc')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="text-secondary grid gap-2 list-disc pl-5">
+                  <li>{t('majors.cySkills.s1')}</li>
+                  <li>{t('majors.cySkills.s2')}</li>
+                  <li>{t('majors.cySkills.s3')}</li>
+                  <li>{t('majors.cySkills.s4')}</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </Section>
 
