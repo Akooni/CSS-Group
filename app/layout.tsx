@@ -20,6 +20,11 @@ const tajawal = Tajawal({ weight: ['400','500','700'], subsets: ['arabic'], vari
 export const metadata: Metadata = {
   title: 'Computer Science Society (CSS)',
   description: 'Join the Computer Science Society — learn, build, and grow with peers.',
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -33,8 +38,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Image
                 src="/logo.png"
                 alt="Computer Science Society logo"
-                width={56}
-                height={56}
+                width={72}
+                height={72}
                 className="logo-img"
                 priority
               />
